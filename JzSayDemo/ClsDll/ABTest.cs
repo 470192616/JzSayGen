@@ -85,8 +85,7 @@ namespace JzSayDemo.ClsDll
                 foreach (var e in this.ValidErrors)
                 {
                     this.Message = e.ParameterName + "|" + e.ErrorMessage;
-                    this.EchoJson(typeof(string), "");
-                    return "";
+                    return this.Message;
                 }
             }
 

@@ -50,12 +50,14 @@
     <Compile Include="AjaxBinValueInAttribute.cs" />
     <Compile Include="ImageThumbnailHelper.cs" />
     <Compile Include="LinqWhereHelper.cs" />
+    <Compile Include="ObjectExten.cs" />
     <Compile Include="StringExten.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIPageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UIPagePager.cs" />
+    <Compile Include="XmlToModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
