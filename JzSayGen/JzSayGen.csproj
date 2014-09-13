@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -46,11 +47,17 @@
   <ItemGroup>
     <Compile Include="AjaxBinAttribute.cs" />
     <Compile Include="AjaxBinHttpHandler.cs" />
+    <Compile Include="AjaxBinHttpHandlerFactory.cs" />
     <Compile Include="AjaxBinValidError.cs" />
     <Compile Include="AjaxBinValueInAttribute.cs" />
+    <Compile Include="DataTableToModel.cs" />
+    <Compile Include="EnumExten.cs" />
     <Compile Include="ImageThumbnailHelper.cs" />
     <Compile Include="LinqWhereHelper.cs" />
+    <Compile Include="MACPrimaryKey.cs" />
     <Compile Include="ObjectExten.cs" />
+    <Compile Include="RandImageCode.cs" />
+    <Compile Include="SqlHelper.cs" />
     <Compile Include="StringExten.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIPageBase.cs">

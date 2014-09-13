@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.ComponentModel;
+using System.Data.SqlClient;
 
 namespace JzSayGen
 {
@@ -11,23 +12,21 @@ namespace JzSayGen
     /// 
     /// </summary>
     public static class ObjectExten
-    {
+    {        
         /// <summary>
-        /// 获取位域的值列表
+        /// sql参数调试
         /// </summary>
-        /// <param name="v"></param>
+        /// <param name="sp"></param>
         /// <returns></returns>
-        public static int[] ToIntVal(this Enum v)
+        public static List<string> ToDebugStr(this List<SqlParameter> sp)
         {
-            var et = v.GetType();
-            var arr = v.ToString().Split(',');
-            var tmp = new int[arr.Length];
-            for (int i = 0, j = arr.Length; i < j; i++)
+            if (sp == null || sp.Count == 0) return new List<string>();
+            List<string> s = new List<string>();
+            foreach (var a in sp)
             {
-                var ddc = Enum.Parse(et, arr[i]);
-                tmp[i] = (int)Enum.Parse(et, arr[i]);
+                s.Add(string.Format("{0} {1} {2}", a.ParameterName, a.DbType, a.Value));
             }
-            return tmp;
+            return s;
         }
 
         /// <summary>
