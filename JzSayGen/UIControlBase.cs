@@ -6,11 +6,10 @@ using System.Text;
 namespace JzSayGen
 {
     /// <summary>
-    /// 基础页
+    /// 基础控件
     /// </summary>
-    public class UIPageBase : System.Web.UI.Page
+    public class UIControlBase : System.Web.UI.UserControl
     {
-
         /// <summary>
         /// 
         /// </summary>

@@ -18,9 +18,14 @@ namespace JzSayGen
     public class AjaxBinHttpHandlerFactory : IHttpHandlerFactory
     {
         /// <summary>
-        /// 宿主命名空间 推荐在 Application_Start 中设置
+        /// 宿主命名空间 推荐在Application_Start中设置 AjaxBinHttpHandlerFactory.MatrixNamespace = "JzSayGen.ClsDll";
         /// </summary>
         public static string MatrixNamespace { get; set; }
+
+        /// <summary>
+        /// 宿主的程序集设置 推荐在Application_Start中设置 AjaxBinHttpHandlerFactory.MatrixAssembly = Assembly.GetExecutingAssembly();
+        /// </summary>
+        public static Assembly MatrixAssembly { get; set; }
 
         /// <summary>
         /// /AjaxBin/Class1-arg1-arg2.ashx
@@ -40,7 +45,7 @@ namespace JzSayGen
             string typeName = method.Split('-')[0];
             string className = AjaxBinHttpHandlerFactory.MatrixNamespace + "." + typeName;
 
-            IHttpHandler instance = Assembly.GetExecutingAssembly().CreateInstance(className) as IHttpHandler;
+            IHttpHandler instance = AjaxBinHttpHandlerFactory.MatrixAssembly.CreateInstance(className) as IHttpHandler;
             if (instance == null)
             {
                 throw new NotSupportedException("处理类" + className + "未找到");

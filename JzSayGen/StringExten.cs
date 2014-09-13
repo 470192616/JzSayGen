@@ -60,6 +60,7 @@ namespace JzSayGen
         /// 
         /// </summary>
         /// <param name="s"></param>
+        /// <param name="defaultVal"></param>
         /// <returns></returns>
         public static Int32 ToInt32(this string s, Int32 defaultVal = 0)
         {
@@ -72,6 +73,7 @@ namespace JzSayGen
         /// 
         /// </summary>
         /// <param name="s"></param>
+        /// <param name="defaultVal"></param>
         /// <returns></returns>
         public static Int64 ToInt64(this string s, Int64 defaultVal = 0)
         {
@@ -84,6 +86,7 @@ namespace JzSayGen
         /// 
         /// </summary>
         /// <param name="s"></param>
+        /// <param name="defaultVal"></param>
         /// <returns></returns>
         public static decimal ToDecimal(this string s, decimal defaultVal = 0M)
         {
@@ -375,7 +378,7 @@ namespace JzSayGen
         /// </summary>
         public static bool IsValidEmailAddress(this string s)
         {
-            return Regex.IsMatch(s, @"^[\w-\.]+@([\w-]+\.)+[\w-]{1}$", RegexOptions.IgnoreCase);
+            return Regex.IsMatch(s, @"^[\w-\.]+@([\w-]+\.)+[\w-]{1,}$", RegexOptions.IgnoreCase);
         }
 
         /// <summary>
@@ -401,7 +404,7 @@ namespace JzSayGen
         public static bool IsSubDomain(this string s)
         {
             if (string.IsNullOrEmpty(s)) return false;
-            return Regex.IsMatch(s, @"^[A-Za-z0-9][A-Za-z0-9-]{1}", RegexOptions.IgnoreCase);
+            return Regex.IsMatch(s, @"^[A-Za-z0-9][A-Za-z0-9-]{1,}", RegexOptions.IgnoreCase);
         }
 
         /// <summary>
