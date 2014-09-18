@@ -58,6 +58,7 @@
     <Compile Include="MACPrimaryKey.cs" />
     <Compile Include="ObjectExten.cs" />
     <Compile Include="RandImageCode.cs" />
+    <Compile Include="RunCache.cs" />
     <Compile Include="SqlHelper.cs" />
     <Compile Include="StringExten.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

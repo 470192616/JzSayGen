@@ -136,7 +136,7 @@ namespace JzSayGen
         public virtual void EchoJson(Type T, object data)
         {
             string d = new JavaScriptSerializer().Serialize(data);
-            d = "{" + string.Format("Code:{0}, Message:\"{1}\", Data:{2}", this.Code, this.Message, d) + "}";
+            d = "{" + string.Format("\"Code\":{0}, \"Message\":\"{1}\", \"Data\":{2}", this.Code, this.Message, d) + "}";
 
             string cbFun = this.ParseParametersValue(this.CurrentContext.Request, "", "callback");
 
@@ -151,7 +151,7 @@ namespace JzSayGen
         public virtual void EchoFormTarget(Type T, object data)
         {
             string d = new JavaScriptSerializer().Serialize(data);
-            d = "{" + string.Format("Code:{0}, Message:\"{1}\", Data:{2}", this.Code, this.Message, d) + "}";
+            d = "{" + string.Format("\"Code\":{0}, \"Message\":\"{1}\", \"Data\":{2}", this.Code, this.Message, d) + "}";
 
             string cbFun = this.ParseParametersValue(this.CurrentContext.Request, "", "callback");
             StringBuilder s = new StringBuilder();
@@ -359,6 +359,7 @@ namespace JzSayGen
             if (curAttributes == null || curAttributes.Length != 1) return;
 
             var opt = (curAttributes[0] as AjaxBinAttribute);
+            options.Credential = opt.Credential;
             if (string.IsNullOrEmpty(opt.RequestMethod) == false) options.RequestMethod = opt.RequestMethod;
             if (string.IsNullOrEmpty(opt.ResponseFormat) == false) options.ResponseFormat = opt.ResponseFormat;
         }

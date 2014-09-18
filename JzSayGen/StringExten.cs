@@ -299,22 +299,6 @@ namespace JzSayGen
         }
 
         /// <summary>
-        /// SHA256 不可逆Hash加密
-        /// </summary>
-        /// <param name="s">原始字符串</param>
-        /// <returns>SHA256结果,返回长度为44字节的字符串</returns>
-        public static string SHA256(this string s)
-        {
-            if (string.IsNullOrEmpty(s)) return "";
-            if (s.Length < 1) return "";
-
-            byte[] SHA256Data = Encoding.UTF8.GetBytes(s);
-            SHA256Managed Sha256 = new SHA256Managed();
-            byte[] Result = Sha256.ComputeHash(SHA256Data);
-            return Convert.ToBase64String(Result);
-        }
-
-        /// <summary>
         /// 清理指定字符串，大小写不敏感
         /// </summary>        
         /// <param name="s"></param>
@@ -416,5 +400,97 @@ namespace JzSayGen
             if (s.Length != 3 && s.Length != 6) return false;
             return !Regex.IsMatch(s, @"[^0-9a-fA-F]", RegexOptions.IgnoreCase);
         }
+
+        /// <summary>
+        /// 检查是否有效的Url地址
+        /// </summary>        
+        public static bool IsURL(this string s)
+        {
+            return Regex.IsMatch(s, @"^(http|https)\://([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&%\$\-]+)*@)*((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|localhost|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{1,10}))(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\?\'\\\+&%\$#\=~_\-]+))*$");
+        }
+
+        /// <summary>
+        /// MD5 不可逆Hash加密
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string MD5(this string s)
+        {
+            if (string.IsNullOrEmpty(s)) return "";
+
+            System.Security.Cryptography.MD5CryptoServiceProvider x = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            byte[] bs = x.ComputeHash(System.Text.Encoding.UTF8.GetBytes(s));
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach (byte b in bs)
+            {
+                sb.Append(b.ToString("x2").ToLower());
+            }
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// SHA256 不可逆Hash加密
+        /// </summary>
+        /// <param name="s">原始字符串</param>
+        /// <returns>SHA256结果,返回长度为44字节的字符串</returns>
+        public static string SHA256(this string s)
+        {
+            if (string.IsNullOrEmpty(s)) return "";
+
+            byte[] SHA256Data = Encoding.UTF8.GetBytes(s);
+            SHA256Managed Sha256 = new SHA256Managed();
+            byte[] Result = Sha256.ComputeHash(SHA256Data);
+            return Convert.ToBase64String(Result);
+        }
+
+        /// <summary>
+        /// AES256 ECB PKCS7 加密
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="key">加密密钥，有效长度最短1位最长只截取32位</param>
+        /// <returns></returns>
+        public static string AESEncrypt(this string s, string key)
+        {
+            if (s.IsNullOrEmpty()) return "";
+            if (key.IsNullOrEmpty()) return "";
+
+            RijndaelManaged rm = new RijndaelManaged();
+            rm.Key = UTF8Encoding.UTF8.GetBytes(key.PadRight(32, '*').Substring(0, 32));
+            rm.Mode = CipherMode.ECB;
+            rm.Padding = PaddingMode.PKCS7;
+
+            byte[] dat = UTF8Encoding.UTF8.GetBytes(s);
+            using (ICryptoTransform ct = rm.CreateEncryptor())
+            {
+                byte[] resultArray = ct.TransformFinalBlock(dat, 0, dat.Length);
+                return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+            }
+        }
+
+        /// <summary>
+        /// AES256 ECB PKCS7 解密
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="key">解密密钥，有效长度最短1位最长只截取32位</param>
+        /// <returns></returns>
+        public static string AESDecrypt(this string s, string key)
+        {
+            if (s.IsNullOrEmpty()) return "";
+            if (key.IsNullOrEmpty()) return "";
+
+            RijndaelManaged rm = new RijndaelManaged();
+            rm.Key = UTF8Encoding.UTF8.GetBytes(key.PadRight(32, '*').Substring(0, 32));
+            rm.Mode = CipherMode.ECB;
+            rm.Padding = PaddingMode.PKCS7;
+
+            byte[] dat = Convert.FromBase64String(s);
+            using (ICryptoTransform ct = rm.CreateDecryptor())
+            {
+                byte[] resultArray = ct.TransformFinalBlock(dat, 0, dat.Length);
+                return UTF8Encoding.UTF8.GetString(resultArray);
+            }
+        }
+
+
     }
 }
