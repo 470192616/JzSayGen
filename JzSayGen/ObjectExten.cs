@@ -30,6 +30,29 @@ namespace JzSayGen
         }
 
         /// <summary>
+        /// 转换字符串列表为sql参数集合 返回类似 @StrArg1,@StrArg2,@StrArg3
+        /// </summary>
+        /// <param name="strList">字符串列表参数</param>
+        /// <param name="sp">参数对象</param>
+        /// <param name="sqlPreifx">参数前缀</param>
+        /// <returns></returns>
+        public static string ToSqlParameter(this List<string> strList, ref List<SqlParameter> sp, string sqlPreifx = "StrArg")
+        {
+            if (strList == null || strList.Count == 0) return "";
+
+            List<string> arg = new List<string>();
+            foreach (var s in strList)
+            {
+                if (s.IsNullOrEmpty()) continue;
+                if (arg.Contains(s)) continue;
+                string a = "@" + sqlPreifx + arg.Count.ToString();
+                arg.Add(a);
+                sp.Add(new SqlParameter(a, s));
+            }
+            return string.Join(",", arg);
+        }
+
+        /// <summary>
         /// 转换对象类型
         /// </summary>
         /// <param name="value">对象值</param>
