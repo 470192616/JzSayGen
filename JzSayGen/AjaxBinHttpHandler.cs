@@ -81,7 +81,7 @@ namespace JzSayGen
                 throw new NotSupportedException("调用方式" + this.CurrentContext.Request.HttpMethod + "不支持");
             }
 
-            if (options.Credential == true)
+            if (options.Credential == AjaxBinCredential.Yes)
             {
                 if (this.CredentialValidator(this.CurrentContext) == false)
                 {
@@ -359,7 +359,7 @@ namespace JzSayGen
             if (curAttributes == null || curAttributes.Length != 1) return;
 
             var opt = (curAttributes[0] as AjaxBinAttribute);
-            options.Credential = opt.Credential;
+            if (opt.Credential != AjaxBinCredential.Parent) options.Credential = opt.Credential;
             if (string.IsNullOrEmpty(opt.RequestMethod) == false) options.RequestMethod = opt.RequestMethod;
             if (string.IsNullOrEmpty(opt.ResponseFormat) == false) options.ResponseFormat = opt.ResponseFormat;
         }

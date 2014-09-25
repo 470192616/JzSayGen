@@ -11,7 +11,7 @@ namespace JzSayDemo.ClsDll
     /// <summary>
     /// 
     /// </summary>
-    [AjaxBin(RequestMethod = "GET", ResponseFormat = "Json", Credential = true)]
+    [AjaxBin(RequestMethod = "GET", ResponseFormat = "Json", Credential = AjaxBinCredential.Yes)]
     public class ABTest : AjaxBinHttpHandler, IRequiresSessionState
     {
         /// <summary>
