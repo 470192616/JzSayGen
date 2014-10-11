@@ -16,18 +16,11 @@ namespace JzSayGen
         /// 解析ascx控件
         /// </summary>
         /// <param name="ascxPath">~/ArtList.ascx</param>
+        /// <param name="context"></param>
         /// <returns></returns>
-        public static string RenderView(string ascxPath)
+        public static string RenderView(string ascxPath, HttpContext context = null)
         {
-            using (System.Web.UI.Page p = new System.Web.UI.Page())
-            {
-                using (StringWriter output = new StringWriter())
-                {
-                    p.Controls.Add(p.LoadControl(ascxPath));
-                    HttpContext.Current.Server.Execute(p, output, true);
-                    return output.ToString();
-                }
-            }
+            return RenderView<System.Web.UI.Control>(ascxPath, null);            
         }
 
         /// <summary>
@@ -35,17 +28,19 @@ namespace JzSayGen
         /// </summary>
         /// <param name="ascxPath">~/ArtList.ascx</param>
         /// <param name="controlBindFn"></param>
+        /// <param name="context"></param>
         /// <returns></returns>
-        public static string RenderView(string ascxPath, Action<System.Web.UI.Control> controlBindFn)
+        public static string RenderView<T>(string ascxPath, Action<T> controlBindFn, HttpContext context = null) where T : System.Web.UI.Control
         {
+            if (context == null) context = HttpContext.Current;
             using (System.Web.UI.Page p = new System.Web.UI.Page())
             {
                 using (StringWriter output = new StringWriter())
                 {
-                    System.Web.UI.Control ctrl = p.LoadControl(ascxPath);
-                    controlBindFn(ctrl);
+                    T ctrl = p.LoadControl(ascxPath) as T;
+                    if (controlBindFn != null) controlBindFn(ctrl);
                     p.Controls.Add(ctrl);
-                    HttpContext.Current.Server.Execute(p, output, true);
+                    context.Server.Execute(p, output, true);
                     return output.ToString();
                 }
             }

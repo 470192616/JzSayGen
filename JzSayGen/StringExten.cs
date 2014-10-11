@@ -96,6 +96,19 @@ namespace JzSayGen
         }
 
         /// <summary>
+        /// 判断是否guid类型
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static bool IsGuid(this string s)
+        {
+            if (string.IsNullOrEmpty(s)) return false;
+            if (s.Length < 30) return false;
+            Guid g;
+            return Guid.TryParse(s, out g);
+        }
+
+        /// <summary>
         /// 判断字符串是否是短日期格式 yyyy-mm-dd
         /// </summary>    
         public static bool IsShortDate(this string s)
