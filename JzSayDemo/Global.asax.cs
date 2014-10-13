@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using JzSayGen;
+using System.Configuration;
+using System.Reflection;
 
 namespace JzSayDemo
 {
@@ -12,7 +15,10 @@ namespace JzSayDemo
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            AjaxBinHttpHandlerFactory.MatrixNamespace = "JzSayDemo.ClsDll";
+            AjaxBinHttpHandlerFactory.MatrixAssembly = Assembly.GetExecutingAssembly();
 
+            SqlHelper.DB_CONN_STRING = ConfigurationManager.AppSettings.Get("DB_CONN_STRING") ?? "";
         }
 
         protected void Session_Start(object sender, EventArgs e)
