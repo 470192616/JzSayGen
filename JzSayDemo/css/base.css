@@ -36,11 +36,11 @@ ul{list-style:none}
 }
 a.btn{padding-top:1.2rem;color:#FFF;text-decoration: none;outline:0 none;padding-left:2.1rem;padding-right:2.1rem;}   
             
-.btn.green{ background:#52A152; }
+.green{ background:#52A152; }
 .btn.green:hover{ background:#328032; }
-.btn.yellow{ background:#FF9C30;}
+.yellow{ background:#FF9C30;}
 .btn.yellow:hover{ background:#c87316; }
-.btn.violet{ background:#993333; }
+.violet{ background:#993333; }
 .btn.violet:hover{ background:#990033; }
-.btn.gray{ background:#abbac3; }
+.gray{ background:#abbac3; }
 .btn.gray:hover{ background:#8b9aa3; }

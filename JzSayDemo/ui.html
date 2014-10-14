@@ -22,11 +22,13 @@
         .container {width: 940px;  margin-right: auto;  margin-left: auto;  *zoom: 1;}
         .container:before,.container:after {  display: table;  content: "";  line-height: 0;  clear: both;}
         .the-icons {  font-size: 14px;  line-height: 24px;}
+        .i-code{display:none}
     </style>
 
   </head>
   <body>
     
+        
 
         <input type="button" class="btn green" value="走老你" />        
         <a href="#" class="btn "><i class="icon-spin4 animate-spin"></i></a><br />    
@@ -62,6 +64,10 @@
         <input type="text" class="input" />        
         <textarea class="input"></textarea>
         <p><br /></p>
+        <div class="FloatDiv" style="width:100%; height:auto; z-index:101; background-color:#F065f2">
+            abcdef<br />dd
+        </div>
+        <p><br /></p>
         <textarea id="edtDiv" name="edtDiv">abc</textarea>
     
         <script type="text/javascript">
@@ -90,15 +96,15 @@
                     var editor = K.create(editId, {
                         width: '99%',
                         height: '250px',
-                        uploadJson: '/editorFileUpload.ashx',
-                        fileManagerJson: '/editorFileManager.ashx',
+                        uploadJson: '/AjaxBin/EditorAction-FileUpload.ashx?v=x1',
+                        fileManagerJson: '/AjaxBin/EditorAction-FileManager.ashx?v=x2',
                         allowFileManager: true,
                         extraFileUploadParams : {
                                 item_id : 1000,
                                 category_id : 1
                         },
                         items: [
-				            'source', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				            'source', 'code', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 				            'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
 				            'insertunorderedlist', '|', 'image', 'multiimage', 'link', 'fullscreen']
                     });
