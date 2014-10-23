@@ -30,7 +30,7 @@ namespace JzSayGen
         /// <returns></returns>
         public static string HtmlEncode(this string s)
         {
-            if (string.IsNullOrEmpty(s)) return s;
+            if (string.IsNullOrEmpty(s)) return "";
             return System.Web.HttpUtility.HtmlEncode(s);
         }
 
@@ -41,8 +41,30 @@ namespace JzSayGen
         /// <returns></returns>
         public static string HtmlDecode(this string s)
         {
-            if (string.IsNullOrEmpty(s)) return s;
+            if (string.IsNullOrEmpty(s)) return "";
             return System.Web.HttpUtility.HtmlDecode(s);
+        }
+
+        /// <summary>
+        /// url编码
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string UrlEncode(this string s)
+        {
+            if (string.IsNullOrEmpty(s)) return "";
+            return System.Web.HttpUtility.UrlEncode(s);
+        }
+
+        /// <summary>
+        /// url解码
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string UrlDecode(this string s)
+        {
+            if (string.IsNullOrEmpty(s)) return "";
+            return System.Web.HttpUtility.UrlDecode(s);
         }
 
         /// <summary>
@@ -52,7 +74,7 @@ namespace JzSayGen
         /// <returns></returns>
         public static string ToJsLine(this string s)
         {
-            if (s.IsNullOrEmpty()) return s;
+            if (s.IsNullOrEmpty()) return "";
             return s.Replace("\r", "").Replace("\n", "").Replace("\t", "").Replace("\\'", "").Replace("\\\"", "").Replace("'", "").Replace("\"", "");
         }
 
