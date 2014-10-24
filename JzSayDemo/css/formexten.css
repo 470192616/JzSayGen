@@ -46,6 +46,6 @@
 	.single-select .arrow{ display:none; position:absolute; left:15px; top:35px; width:21px; height:11px; text-indent:-9999px; background:url(skin_icons.png) -40px -356px no-repeat; }
 
 textarea{ overflow:auto; }
-    textarea.input{ width:300px; height:65px; }
-    .input{ padding:5px 4px; min-height:20px; line-height:20px; border:1px solid #d4d4d4; background:#fff; vertical-align:middle; color:#333; font-size:100%; }
-	.input:focus{ background:#FFFBDE; border-color:#7BBFF2; outline:1px solid #99D8F5; }
+textarea.input{ width:300px; height:65px; }
+.input{ padding:5px 4px; min-height:20px; line-height:20px; border:1px solid #d4d4d4; background:#fff; vertical-align:middle; color:#858585; font-size:100%; }
+.input:focus{ background:#FFFBDE; border-color:#7BBFF2; outline:1px solid #99D8F5; color:#696969; }

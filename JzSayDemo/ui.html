@@ -12,14 +12,18 @@
         <link rel="stylesheet" href="/css/fontello.css" type="text/css" />
         <link rel="stylesheet" href="/css/animation.css" type="text/css" />
         <link rel="stylesheet" href="/css/formexten.css" type="text/css" />
+        
+        <link rel="stylesheet" href="/css/datepicker.css" type="text/css" />
 
         <script src="/script/jquery-1.10.2.min.js" type="text/javascript"></script>
-        <script src="/script/jquery.nicescroll.js" type="text/javascript"></script>
-        <script src="/script/lhgdialog/lhgdialog.js?skin=idialog" type="text/javascript"></script>
+        <script src="/script/jquery.nicescroll.js" type="text/javascript"></script>        
         <script src="/script/jquery.formexten.js" type="text/javascript"></script>
 
         <script src="/kindeditor/kindeditor-min.js" type="text/javascript"></script>
         <script src="/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+        
+        <script src="/script/jquery.datepicker.js" type="text/javascript"></script>
+
 
         <style type="text/css">
             [class*="span"] {  float: left;  min-height: 1px;  margin-left: 20px;}
@@ -28,6 +32,9 @@
             .container:before,.container:after {  display: table;  content: "";  line-height: 0;  clear: both;}
             .the-icons {  font-size: 14px;  line-height: 24px;}
             .i-code{display:none}
+            
+            table{background-color:transparent; max-width:100%; border-collapse:collapse;border-spacing:0;}
+            th,td{padding:8px; vertical-align:top;border:1px solid #CCC;}
         </style>
 
     </head>
@@ -61,6 +68,12 @@
             </div>
         </div>
         
+        <table>
+            <tr>
+                <th>titl</th>
+                <td>vals</td>
+            </tr>
+        </table>
 
         <input type="button" class="btn green" value="走老你" />        
         <a href="#" class="btn "><i class="icon-spin4 animate-spin"></i></a><br />    
@@ -103,7 +116,7 @@
         </div>
         <p><br /></p>
 
-        <input type="text" class="input" />        
+        <input type="text" class="input dateChose" />        
         <textarea class="input"></textarea>
         <p><br /></p>
         <div class="FloatDiv" style="width:100%; height:auto; z-index:101; background-color:#F065f2">
@@ -115,6 +128,7 @@
         <script type="text/javascript">
             $(function () {
                 //
+                $('.dateChose').datepicker({ format: "yyyy-mm-dd", weekStart: 1 });
 
                 if ('undefined' == typeof (document.body.style.maxHeight)) {
                     //检测浏览器版本是否ie8-
@@ -159,7 +173,7 @@
                 $(".rule-multi-checkbox").ruleMultiCheckbox();
                 $(".rule-multi-radio").ruleMultiRadio();
                 $(".rule-single-select").ruleSingleSelect();
-                $(".rule-multi-porp").ruleMultiPorp();
+                $(".rule-multi-porp").ruleMultiPorp();                
             }
 
             function message() {
