@@ -59,6 +59,26 @@ namespace JzSayGen
             return (T)Enum.ToObject(typeof(T), value);
         }
 
+        
+        /// <summary>
+        /// 带EnumTip属性的枚举转dictionary类型
+        /// </summary>
+        /// <param name="enumType">枚举类型</param>
+        /// <param name="attachKeyNum">每个key值增加的数字 主要用于枚举中有值为0的时候搜索中默认int32的值也是0做处理</param>
+        /// <param name="removeKeys">要移除的key值</param>
+        /// <returns></returns>
+        public static Dictionary<Int32, string> GetDictionary(Type enumType, Int32 attachKeyNum, params Int32[] removeKeys)
+        {                
+            Dictionary<Int32, string> r = new Dictionary<int, string>();
+            var dict = GetDictionary(enumType);
+            foreach (var d in dict)
+            {
+                if (removeKeys.Any(x => x == d.Key)) continue;
+                r.Add(d.Key + attachKeyNum, d.Value);
+            }
+            return r;
+        }
+
         /// <summary>
         /// 带EnumTip属性的枚举转dictionary类型
         /// </summary>

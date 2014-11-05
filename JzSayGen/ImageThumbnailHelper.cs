@@ -24,20 +24,7 @@ namespace JzSayGen
                 this.Width = w;
                 this.Height = h;
             }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="maxWidth"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
-        /// <returns></returns>
-        static ThumbnailSize FixSize(int maxWidth, int width, int height)
-        {
-            if (maxWidth >= width) return new ThumbnailSize(width, height);
-            return new ThumbnailSize(maxWidth, Convert.ToInt32((double)(height * maxWidth) / (double)width));
-        }
+        }        
 
         /// <summary>
         /// 
@@ -74,45 +61,52 @@ namespace JzSayGen
         }
 
         ///<summary>
-        /// 生成缩略图，并自动按比例缩放
-        ///</summary>
-        ///<param name="sourceImg">原图地址 c:\uploads\a.jpg</param>
-        ///<param name="fileName">保存的地址 c:\uploads\a_30.jpg</param>
-        ///<param name="maxWidth">最大宽</param>
-        ///<param name="maxHeight">最大高等于0则只限制宽度</param>
-        public static void CreateThumbnail(string sourceImg, string fileName, int maxWidth, int maxHeight = 0)
+        /// 生成缩略图
+        /// </summary>
+        /// <param name="originalSrc">原图地址 c:\uploads\a.jpg</param>
+        /// <param name="thumbnailSrc">原图地址 c:\uploads\a_s.jpg</param>
+        /// <param name="thumbWidth">缩略图宽度</param>
+        /// <param name="thumbHeight">缩略图高度</param>        
+        public static void MakeThumbnail(string originalSrc, string thumbnailSrc, int thumbWidth, int thumbHeight)
         {
-            using (Image img = Image.FromFile(sourceImg))
+            using (System.Drawing.Image originalImage = System.Drawing.Image.FromFile(originalSrc))
             {
-                if (img.Width <= maxWidth && (maxHeight == 0 || img.Height <= maxWidth))
-                {
-                    img.Save(fileName);
-                    return;
-                }
+                var tSize = NewSize(thumbWidth, thumbHeight, originalImage.Width, originalImage.Height);
+                int x = tSize.Width < thumbWidth ? (thumbWidth - tSize.Width) / 2 : 0;
+                int y = tSize.Height < thumbHeight ? (thumbHeight - tSize.Height) / 2 : 0;
 
-                ThumbnailSize newSize = maxHeight == 0 ? FixSize(maxWidth, img.Width, img.Height) : NewSize(maxWidth, maxHeight, img.Width, img.Height);
-
-                using (var outBmp = new Bitmap(newSize.Width, newSize.Height))
+                using (System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(thumbWidth, thumbHeight))
                 {
-                    using (Graphics g = Graphics.FromImage(outBmp))
+                    using (Graphics g = System.Drawing.Graphics.FromImage(bitmap))
                     {
-                        g.CompositingQuality = CompositingQuality.HighQuality;
-                        g.SmoothingMode = SmoothingMode.HighQuality;
-                        g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                        g.DrawImage(img, new Rectangle(0, 0, newSize.Width, newSize.Height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel);
+                        g.Clear(Color.White);
+
+                        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                        g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                        g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+                        g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+
+                        g.DrawImage(originalImage, new Rectangle(x, y, tSize.Width, tSize.Height), new Rectangle(0, 0, originalImage.Width, originalImage.Height), GraphicsUnit.Pixel);
+
+                        bitmap.Save(thumbnailSrc, ImageFormat.Jpeg);
+                        /*
+                        var quality = new long[] { 80 };
+                        var encoderParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, quality);
+                        var encoderParams = new EncoderParameters();
+                        encoderParams.Param[0] = encoderParam;
+                        ImageCodecInfo jpegIci = ImageCodecInfo.GetImageEncoders().Single(c => c.FormatDescription.Equals("JPEG"));
+                        if (jpegIci != null)
+                            bitmap.Save(thumbnailSrc, jpegIci, encoderParams);
+                        else
+                            bitmap.Save(thumbnailSrc, ImageFormat.Jpeg);
+                        */
                     }
-                    var quality = new long[] { 50 };
-                    var encoderParam = new EncoderParameter(Encoder.Quality, quality);
-                    var encoderParams = new EncoderParameters();
-                    encoderParams.Param[0] = encoderParam;
-                    ImageCodecInfo jpegIci = ImageCodecInfo.GetImageEncoders().Single(c => c.FormatDescription.Equals("JPEG"));
-                    if (jpegIci != null)
-                        outBmp.Save(fileName, jpegIci, encoderParams);
-                    else
-                        //outBmp.Save(fileName, img.RawFormat);
-                        outBmp.Save(fileName, ImageFormat.Jpeg);
                 }
+
             }
         }
+
+
+
     }
 }
