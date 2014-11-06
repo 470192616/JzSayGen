@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace JzSayGen
 {
@@ -470,12 +471,23 @@ namespace JzSayGen
         /// <returns>SHA256结果,返回长度为44字节的字符串</returns>
         public static string SHA256(this string s)
         {
+            return s.SHA256Swap(false);
+        }
+
+        /// <summary>
+        /// SHA256 不可逆Hash加密 与php、java等交互
+        /// </summary>
+        /// <param name="s">原始字符串</param>
+        /// <param name="isHex">是否编码 true返回64字节 false返回44字节</param>
+        /// <returns>返回长度为44或64字节的字符串</returns>
+        public static string SHA256Swap(this string s, bool isHex = true)
+        {
             if (string.IsNullOrEmpty(s)) return "";
 
             byte[] SHA256Data = Encoding.UTF8.GetBytes(s);
             SHA256Managed Sha256 = new SHA256Managed();
             byte[] Result = Sha256.ComputeHash(SHA256Data);
-            return Convert.ToBase64String(Result);
+            return isHex ? BitConverter.ToString(Result).Replace("-", "") : Convert.ToBase64String(Result);
         }
 
         /// <summary>
@@ -523,6 +535,78 @@ namespace JzSayGen
             {
                 byte[] resultArray = ct.TransformFinalBlock(dat, 0, dat.Length);
                 return UTF8Encoding.UTF8.GetString(resultArray);
+            }
+        }
+
+        /// <summary>
+        /// AES256 CBC PKCS7 加密 与php、java等交互
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="key">32位密钥</param>
+        /// <returns></returns>
+        public static string AESEncryptSwap(this string s, string key)
+        {
+            if (s.IsNullOrEmpty()) return "";
+            if (key.IsNullOrEmpty() || key.Length != 32) return "";
+
+            RijndaelManaged aes = new RijndaelManaged();
+            aes.KeySize = 256;
+            aes.BlockSize = 128;
+            aes.Mode = CipherMode.CBC;
+            aes.Padding = PaddingMode.PKCS7;
+            aes.Key = Encoding.UTF8.GetBytes(key);
+            aes.IV = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+            using (ICryptoTransform encrypt = aes.CreateEncryptor(aes.Key, aes.IV))
+            {
+                byte[] xBuff = null;
+                using (var ms = new MemoryStream())
+                {
+                    using (var cs = new CryptoStream(ms, encrypt, CryptoStreamMode.Write))
+                    {
+                        byte[] xXml = Encoding.UTF8.GetBytes(s);
+                        cs.Write(xXml, 0, xXml.Length);
+                    }
+
+                    xBuff = ms.ToArray();
+                    return Convert.ToBase64String(xBuff);
+                }
+            }
+        }
+
+        /// <summary>
+        /// AES256 CBC PKCS7 解密 与php、java等交互
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="key">32位密钥</param>
+        /// <returns></returns>
+        public static string AESDecryptSwap(this string s, string key)
+        {
+            if (s.IsNullOrEmpty()) return "";
+            if (key.IsNullOrEmpty() || key.Length != 32) return "";
+
+            RijndaelManaged aes = new RijndaelManaged();
+            aes.KeySize = 256;
+            aes.BlockSize = 128;
+            aes.Mode = CipherMode.CBC;
+            aes.Padding = PaddingMode.PKCS7;
+            aes.Key = Encoding.UTF8.GetBytes(key);
+            aes.IV = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+            using (ICryptoTransform decrypt = aes.CreateDecryptor())
+            {
+                byte[] xBuff = null;
+                using (var ms = new MemoryStream())
+                {
+                    using (var cs = new CryptoStream(ms, decrypt, CryptoStreamMode.Write))
+                    {
+                        byte[] xXml = Convert.FromBase64String(s);
+                        cs.Write(xXml, 0, xXml.Length);
+                    }
+
+                    xBuff = ms.ToArray();
+                    return Encoding.UTF8.GetString(xBuff);
+                }
             }
         }
 
