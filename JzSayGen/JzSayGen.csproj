@@ -60,6 +60,7 @@
     <Compile Include="RandImageCode.cs" />
     <Compile Include="RunCache.cs" />
     <Compile Include="SqlHelper.cs" />
+    <Compile Include="StringCodingExten.cs" />
     <Compile Include="StringExten.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIAscx.cs" />
