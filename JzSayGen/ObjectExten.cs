@@ -12,7 +12,22 @@ namespace JzSayGen
     /// 
     /// </summary>
     public static class ObjectExten
-    {        
+    {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ts">DateTime yyyyMMddHHmmssfff</param>
+        /// <returns></returns>
+        public static DateTime ParseDateTimeTS(this Int64 ts)
+        {
+            if (ts < 20141204120412100 || ts > 20881204120412100) throw new ArgumentException("不是有效的ts数据");
+            string cl = ts.ToString();
+            DateTime dt;
+            if (DateTime.TryParse(string.Format("{0}-{1}-{2} {3}:{4}:{5}.{6}", cl.Substring(0, 4), cl.Substring(4, 2), cl.Substring(6, 2), cl.Substring(8, 2), cl.Substring(10, 2), cl.Substring(12, 2), cl.Substring(14, 3)), out dt)) return dt;
+            throw new ArgumentException("不是有效的的ts数据格式");
+        }
+
         /// <summary>
         /// sql参数调试
         /// </summary>

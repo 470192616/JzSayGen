@@ -120,6 +120,7 @@ namespace JzSayGen
         public static string ClearHtmlTag(this string s)
         {
             if (string.IsNullOrEmpty(s)) return "";
+            //Regex.Replace(html, "(?is)<.*?>", "")
             //string pattern = @"<(.|\n)*?>";
             return Regex.Replace(s, @"<[^>]*>", string.Empty, RegexOptions.IgnoreCase);
         }
@@ -381,7 +382,7 @@ namespace JzSayGen
         public static bool IsSubDomain(this string s)
         {
             if (string.IsNullOrEmpty(s)) return false;
-            return Regex.IsMatch(s, @"^[A-Za-z0-9][A-Za-z0-9-]{1,}", RegexOptions.IgnoreCase);
+            return Regex.IsMatch(s, @"^[A-Za-z0-9][A-Za-z0-9-]+$", RegexOptions.IgnoreCase);
         }
 
         /// <summary>

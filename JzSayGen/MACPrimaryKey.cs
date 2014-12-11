@@ -28,9 +28,14 @@ namespace JzSayGen
         public static readonly decimal ZERODecimal = 0.00M;
 
         /// <summary>
-        /// 获取当前日期时间 return DateTime.Now
+        /// 获取当前日期时间 DateTime.Now
         /// </summary>
         public static DateTime GetNow { get { return DateTime.Now; } }
+
+        /// <summary>
+        /// 获取当前日期时间数字 DateTime.Now.ToString("yyyyMMddHHmmssfff")
+        /// </summary>
+        public static Int64 GetNowTS { get { return Int64.Parse(DateTime.Now.ToString("yyyyMMddHHmmssfff")); } }
 
 
         private static Int64 seed1 = Int64.Parse(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds.ToString("0"));
