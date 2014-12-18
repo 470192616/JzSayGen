@@ -69,7 +69,7 @@
         if (c.Buttons) {
             s.push('<div class="JSBoxPanelFooter" id="JSBoxFoot' + idStr + '">');
             for (var i in c.Buttons) {
-                s.push(' <input type="button" value="' + i + '" onclick="' + c.Buttons[i] + '(\'' + idStr + '\',\'' + i + '\')" /> ');
+                s.push(' <input type="button" class="btn" value="' + i + '" onclick="' + c.Buttons[i] + '(\'' + idStr + '\',\'' + i + '\')" /> ');
             }
             s.push('</div>');
         }
