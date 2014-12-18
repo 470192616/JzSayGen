@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>JS</title>    	
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="author" content="jzsay.com">
+        <meta name="keywords" content="jzsay.com 价值说" />
+        <meta name="description" content="jzsay.com 价值说"/>
+
+        <link rel="stylesheet" href="/assets/css/base.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/fontello.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/animation.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/formexten.css" type="text/css" />                
+
+        <script src="/assets/script/jquery-1.10.2.min.js" type="text/javascript"></script>        
+        <script src="/assets/script/jquery.formexten.js" type="text/javascript"></script>
+
+    </head>
+  <body>
+      
+        <iframe src="/assets/blank.html" name="FormPostTag" style="display:none;"></iframe>
+        <form method="post" target="FormPostTag" action="/AjaxBin/Bridge-LoginSys.ashx">
+        <div style="z-index:203; background-color:#FFF; position:fixed; top:30%; left:35%; width:30%; height:auto; min-height:40px; line-height:40px; border:1px solid #CCC">
+            <div style="border-bottom:solid 1px #CCC;color:#3c5880;font-weight:bold; padding-left:5px;">
+                <i class="icon-podcast"></i>
+                登录
+            </div>
+            <div style="margin:8px;padding-left:30px;">                
+                    <div style="display:inline-block;line-height:20px;min-height:20px;padding:5px 4px;vertical-align: middle;border:solid 1px #CCC;">
+                    <i class="icon-user-1"></i>
+                    </div><input type="text" name="userName" class="input" placeholder="请输入登录账户" maxlength="20" />
+                <br />
+                    <div style="display:inline-block;line-height:20px;min-height:20px;padding:5px 4px;vertical-align: middle;border:solid 1px #CCC;">
+                    <i class="icon-key-1"></i>
+                    </div><input type="password" name="userPass" class="input" placeholder="请输入登录密码" maxlength="20" />
+                <br />
+                <div id="safePanel" style="display:none">
+                    <div style="display:inline-block;line-height: 20px;min-height: 20px;padding: 5px 4px;vertical-align: middle;border:solid 1px #CCC;">
+                        <i class="icon-params"></i>
+                    </div><input type="text" name="safeCode" class="input" placeholder="验证码" maxlength="6" style="width:55px" />
+                    <img src="/AjaxBin/Bridge-SafeImage.ashx" id="safeImg" style="height:32px; border:solid 1px #CCC; cursor:pointer;" />
+                </div>
+            </div>
+            <div style="border-top:solid 1px #CCC; height:45px; text-align:right;padding-right:10px;">
+                <input type="submit" value="登录" class="btn" />
+            </div>
+        </div>
+        </form>
+
+        <script>
+            $('#safeImg').click(function () {
+                $(this).attr('src', '/AjaxBin/Bridge-SafeImage.ashx?v=' + Math.random());
+            });
+            function PostCallBack(json) {
+                if (json.Code != 0) {
+                    alert(json.Data);
+                    $('#safePanel').show();
+                    return;
+                }
+                top.location = '/JM/SysFrame.aspx';
+            }
+        </script>
+
+</body>
+</html>

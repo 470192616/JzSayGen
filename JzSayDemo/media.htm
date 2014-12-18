@@ -1,0 +1,72 @@
+﻿<!doctype html>
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css"　media="screen and (max-device-width: 400px)"　href="tinyScreen.css" />
+<link rel="stylesheet" type="text/css"　media="screen and (min-width: 400px) and (max-device-width: 600px)"　href="smallScreen.css" />
+
+
+<link rel="stylesheet" media="all and (orientation:portrait)" href="portrait.css">    // 竖放加载
+<link rel="stylesheet" media="all and (orientation:landscape)"href="landscape.css">   // 横放加载
+
+//竖屏时使用的样式
+<style media="all and (orientation:portrait)" type="text/css">
+    #landscape { display: none; }
+</style>
+
+//横屏时使用的样式
+<style media="all and (orientation:landscape)" type="text/css">
+    #portrait { display: none; }
+</style>
+
+
+<style>
+
+html, body { magin: 0;padding: 0;height:100%; font-size:1.2em;}
+.wrap{ margin:2% auto 0 auto; width:95%;}
+header { width:100%; height:5%;background-color:#FF9673;}
+nav{ float:left;width:20%; min-height:600px;background-color:#FF9673;}
+article{ background-color:#FFD24D;}
+aside{ background-color:#73B9FF;}
+
+img, object { max-width: 100%;}
+
+@import url("tinyScreen.css") screen and (max-device-width: 400px);
+
+@media only screen and (min-width:1000px){
+  nav{display:none;}
+  article{ float:left; margin-right:2%; width:70%; min-height:600px;}
+  aside{ float:left; width:28%; min-height:600px;}
+}
+@media only screen and (min-width:601px) and (max-width:999px){
+  header{display:none;}
+  article{ float:left; margin-left:2%; width:78%; min-height:600px;}
+  aside{ display:none;}
+}
+@media only screen and (max-width:600px){
+  nav{display:none;}
+  article{ width:100%; min-height:600px;}
+  aside{ display:none;}
+}
+</style>
+<meta charset="utf-8">
+<title>Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+</head>
+
+<body>
+    http://www.cnblogs.com/jikey/p/3632392.html
+
+    https://github.com/RubyLouvre/mobileTech
+    https://github.com/jtyjty99999/mobileTech
+
+    <header>top-banner</header>
+    <div class="wrap">
+        <nav></nav>
+        <article>
+           <p>the main area</p>
+        </article>
+        <aside>sth</aside>
+    </div>
+</body>
+</html>

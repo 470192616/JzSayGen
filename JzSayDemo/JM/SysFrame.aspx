@@ -1,21 +1,22 @@
-﻿<!DOCTYPE html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SysFrame.aspx.cs" Inherits="JzSayDemo.JM.SysFrame" %>
+<!DOCTYPE html>
 <html>
 	<head>
         <meta charset="utf-8" />
-		<title>标题党</title>    	
+		<title>JS</title>    	
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <meta name="author" content="m.jd.com">
-        <meta name="keywords" content="微商城管理" />
-        <meta name="description" content="微商城管理"/>
+        <meta name="author" content="jzsay.com">
+        <meta name="keywords" content="jzsay.com 价值说" />
+        <meta name="description" content="jzsay.com 价值说"/>
         
-        <link rel="stylesheet" href="/css/base.css" type="text/css" />
-        <link rel="stylesheet" href="/css/fontello.css" type="text/css" />
-        <link rel="stylesheet" href="/css/animation.css" type="text/css" />
-        <link rel="stylesheet" href="/css/formexten.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/base.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/fontello.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/animation.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/formexten.css" type="text/css" />
 
-        <script src="/script/jquery-1.10.2.min.js" type="text/javascript"></script>
-        <script src="/script/jquery.nicescroll.js" type="text/javascript"></script>        
-        <script src="/script/jquery.formexten.js" type="text/javascript"></script>
+        <script src="/assets/script/jquery-1.10.2.min.js" type="text/javascript"></script>
+        <script src="/assets/script/jquery.nicescroll.js" type="text/javascript"></script>        
+        <script src="/assets/script/jquery.formexten.js" type="text/javascript"></script>
 
         <style type="text/css">
             .mainHeader{height:60px; position:fixed;   right:0;    top:0;    width:100%;    z-index: 11; background-color:#F5F5F5; border-bottom:solid 3px #3c5880;}
@@ -71,10 +72,31 @@
 
     <div class="mainHeader">
         <a href="http://kindeditor.net" target="_blank" style="color:#F00">kindeditor.net编辑器</a>
+        <a href="WaterFall.aspx" target="_blank">瀑布流</a>
+        <a href="zui.html" target="_blank">基本元素</a>
+        <a href="UIResetPass.aspx" target="mainframe">修改密码</a>
+        <a href="/AjaxBin/Bridge-LogOutSys.ashx">退出登录</a>
     </div>
     <div class="mainSider">
 
         <ul class="vs">
+            <li><a href="javascript:;"><i class="icon-keyboard"></i><span>代码库</span><b class="icon-angle-double-left"></b></a>
+                <ul class="vss">
+                    <li><a href="UIIntroList.aspx" target="mainframe"><i class="icon-right-dir"></i><span>信息列表</span></a></li>
+                    <li><a href="UIIntroEdit.aspx" target="mainframe"><i class="icon-right-dir"></i><span>信息添加</span></a></li>
+
+                    <li><a href="UICategoryList.aspx" target="mainframe"><i class="icon-right-dir"></i><span>类别列表</span></a></li>
+                    <li><a href="UICategoryEdit.aspx" target="mainframe"><i class="icon-right-dir"></i><span>类别添加</span></a></li>
+
+                    <li><a href="UIKeyWordsList.aspx" target="mainframe"><i class="icon-right-dir"></i><span>分词列表</span></a></li>
+                    <li><a href="UIKeyWordsEdit.aspx" target="mainframe"><i class="icon-right-dir"></i><span>分词添加</span></a></li>
+
+                    <li><a href="UISqldo.aspx" target="mainframe"><i class="icon-right-dir"></i><span>数据操作</span></a></li>
+                    
+                    
+                </ul>
+            </li>
+            
             <li><a href="javascript:;"><i class="icon-folder-open"></i><span>11111111</span><b class="icon-angle-double-left"></b></a>
                 <ul class="vss">
                     <li><a href="#"><i class="icon-right-dir"></i><span>1-aaaaaa</span><em class="">5</em></a></li>
@@ -86,31 +108,12 @@
             <li><a href="#">44444444</a></li>
         </ul>
                 
-        <a href="#" class="menu">
-            <i class="icon-folder-open"></i>
-            <span class="atext">菜单多多号码</span>            
-            <b class="icon-angle-double-left"></b>
-        </a>
-        <ul>
-            <li><a href="#">走你</a><sup class="">5</sup></li>
-            <li><a href="#">走你</a></li>
-            <li><a href="#">走你</a></li>
-        </ul>
-        <a href="#" class="menu">
-            <i class="icon-folder"></i>
-            <span class="atext">科技学校</span>            
-            <b class="icon-angle-double-down"></b>
-        </a>
-        <a href="#" class="menu">
-            <i class="icon-folder-open"></i>
-            <span class="atext">菜单多多号码</span>            
-            <b class="icon-angle-double-left"></b>
-        </a>
+        
         
 
     </div>
     <div class="mainContainer">
-        <iframe id="mainframe" name="mainframe" frameborder="0" marginheight="0" marginwidth="0" src="ui.html"></iframe>
+        <iframe id="mainframe" name="mainframe" frameborder="0" marginheight="0" marginwidth="0" src="SysHi.aspx"></iframe>
     </div>
 
     

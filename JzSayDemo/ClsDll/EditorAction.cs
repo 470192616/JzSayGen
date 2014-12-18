@@ -17,7 +17,7 @@ namespace JzSayDemo.ClsDll
     /// </summary>
     [AjaxBin(RequestMethod = "POST")]
     public class EditorAction : AjaxBinHttpHandler, IRequiresSessionState
-    {
+    {       
 
         /// <summary>
         /// 文件管理
@@ -26,10 +26,10 @@ namespace JzSayDemo.ClsDll
         public void FileManager()
         {
             //根目录路径，相对路径
-            String rootPath = "~/attached/";
+            String rootPath = "~/src/";
 
             //根目录URL，可以指定绝对路径，比如 http://www.yoursite.com/attached/
-            String rootUrl = "/attached/";
+            String rootUrl = "/src/";
             //图片扩展名
             String fileTypes = "gif,jpg,jpeg,png,bmp";
 
@@ -232,10 +232,10 @@ namespace JzSayDemo.ClsDll
         public void FileUpload()
         {
             //文件保存目录路径
-            String savePath = "~/attached/";
+            String savePath = "~/src/";
 
             //根目录URL，可以指定绝对路径，比如 http://www.yoursite.com/attached/
-            String saveUrl = "/attached/";
+            String saveUrl = "/src/";
 
             //定义允许上传的文件扩展名
             Hashtable extTable = new Hashtable();

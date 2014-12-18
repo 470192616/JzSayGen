@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="JzSayDemo.JM.Site1" %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>jzsay.com 价值说</title>    	
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="author" content="jzsay.com">
+        <meta name="keywords" content="jzsay.com 价值说" />
+        <meta name="description" content="jzsay.com 价值说"/>
+
+        <link rel="stylesheet" href="/assets/css/base.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/fontello.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/animation.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/formexten.css" type="text/css" />        
+        <link rel="stylesheet" href="/assets/css/datepicker.css" type="text/css" />
+
+        <script src="/assets/script/jquery-1.10.2.min.js" type="text/javascript"></script>
+        <script src="/assets/script/jquery.nicescroll.js" type="text/javascript"></script>        
+        <script src="/assets/script/jquery.formexten.js" type="text/javascript"></script>
+
+        <script src="/assets/kindeditor/kindeditor-min.js" type="text/javascript"></script>
+        <script src="/assets/kindeditor/lang/zh_CN.js" type="text/javascript"></script>        
+        <script src="/assets/script/jquery.datepicker.js" type="text/javascript"></script>
+
+        <asp:ContentPlaceHolder ID="headerJsAndCss" runat="server"></asp:ContentPlaceHolder>
+    </head>
+<body>
+    <div style="margin:5px;">
+        <asp:ContentPlaceHolder ID="Holder1" runat="server"></asp:ContentPlaceHolder>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            //
+            $('.rule-date').datepicker({ format: "yyyy-mm-dd", weekStart: 1 });
+            $(".rule-single-checkbox").ruleSingleCheckbox();
+            $(".rule-multi-checkbox").ruleMultiCheckbox();
+            $(".rule-multi-radio").ruleMultiRadio();
+            $(".rule-single-select").ruleSingleSelect();
+            $(".rule-multi-porp").ruleMultiPorp();
+            $(".rule-float").smartFloat();
+
+            KindEditor.ready(function (K) {
+                var editor = K.create($('.editor'), {
+                    width: '99%',
+                    height: '250px',
+                    uploadJson: '/AjaxBin/EditorAction-FileUpload.ashx?v=x1',
+                    fileManagerJson: '/AjaxBin/EditorAction-FileManager.ashx?v=x2',
+                    allowFileManager: true,
+                    extraFileUploadParams: { item_id: 1000, category_id: 1 },
+                    items: ['source', 'code', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist', 'insertunorderedlist', '|', 'image', 'multiimage', 'link', 'fullscreen']
+                });
+            });
+        });
+    </script>    
+    <asp:ContentPlaceHolder ID="footerJs" runat="server"></asp:ContentPlaceHolder>    
+</body>
+</html>

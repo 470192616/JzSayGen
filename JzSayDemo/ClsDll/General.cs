@@ -2,32 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Script.Serialization;
-using log4net;
+using JzSayGen;
 
 namespace JzSayDemo.ClsDll
 {
     public class General
     {
+    }
+
+    /// <summary>
+    /// 公共状态
+    /// </summary>
+    public enum EGenStat
+    {
         /// <summary>
-        /// 序列化对象
+        /// 未知1
         /// </summary>
-        public static JavaScriptSerializer JsSerialize = new JavaScriptSerializer();
-
-        static ILog sysLog = null;
-
-        static General()
-        {
-            sysLog = LogManager.GetLogger("SysLogger");
-            log4net.Config.XmlConfigurator.Configure();
-        }
+        [EnumTip("未知")]
+        Unknow = 1,
 
         /// <summary>
-        /// 系统日志
+        /// 显示2
         /// </summary>
-        public static ILog SysLog
-        {
-            get { return sysLog; }
-        }
+        [EnumTip("显示")]
+        Normal = 2,
+
+        /// <summary>
+        /// 隐藏4
+        /// </summary>
+        [EnumTip("隐藏")]
+        Hiden = 4,
+
+        /// <summary>
+        /// 已删除
+        /// </summary>
+        [EnumTip("已删除")]
+        Delete = 8
+
     }
 }

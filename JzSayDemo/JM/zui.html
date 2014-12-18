@@ -8,21 +8,23 @@
         <meta name="keywords" content="微商城管理" />
         <meta name="description" content="微商城管理"/>
 
-        <link rel="stylesheet" href="/css/base.css" type="text/css" />
-        <link rel="stylesheet" href="/css/fontello.css" type="text/css" />
-        <link rel="stylesheet" href="/css/animation.css" type="text/css" />
-        <link rel="stylesheet" href="/css/formexten.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/base.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/fontello.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/animation.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/formexten.css" type="text/css" />
         
-        <link rel="stylesheet" href="/css/datepicker.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/css/datepicker.css" type="text/css" />
 
-        <script src="/script/jquery-1.10.2.min.js" type="text/javascript"></script>
-        <script src="/script/jquery.nicescroll.js" type="text/javascript"></script>        
-        <script src="/script/jquery.formexten.js" type="text/javascript"></script>
+        <script src="/assets/script/jquery-1.10.2.min.js" type="text/javascript"></script>
+        <script src="/assets/script/jquery.nicescroll.js" type="text/javascript"></script>        
+        <script src="/assets/script/jquery.formexten.js" type="text/javascript"></script>
 
-        <script src="/kindeditor/kindeditor-min.js" type="text/javascript"></script>
-        <script src="/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+        <script src="/assets/kindeditor/kindeditor-min.js" type="text/javascript"></script>
+        <script src="/assets/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
         
-        <script src="/script/jquery.datepicker.js" type="text/javascript"></script>
+        <script src="/assets/script/jquery.datepicker.js" type="text/javascript"></script>
+        <script src="/assets/script/JSBox.js" type="text/javascript"></script>
+        <script src="/assets/script/jquery.JSInputEdit.js" type="text/javascript"></script>
 
 
         <style type="text/css">
@@ -33,47 +35,201 @@
             .the-icons {  font-size: 14px;  line-height: 24px;}
             .i-code{display:none}
             
-            table{background-color:transparent; max-width:100%; border-collapse:collapse;border-spacing:0;}
-            th,td{padding:8px; vertical-align:top;border:1px solid #CCC;}
+            
+            
+            a{outline:none;}
+        .tools {padding:0px;margin:0px;}
+        .tools:after {
+            clear: both;
+            float: none;
+            content: ".";
+            display: block;
+            height: 0;
+            overflow: hidden;
+            visibility: hidden;
+        }
+        .tools a:first-child {
+            border-left: 1px solid #DDD;
+        }
+        .tools a:last-child {
+            
+        }
+        .tools a
+        {
+            font-size:18px;
+            color:#333;
+            display:block;
+            float:left;            
+            border-top:1px solid #DDD;
+            border-bottom:1px solid #DDD;
+            border-right: 1px solid #DDD;
+        }
+        .tools a:link, a:visited {
+            color: #333;
+            text-decoration: none;
+        }
+        .tools a:hover {
+            color: #0065d9;
+            text-decoration: none;
+        }
+        .tools a:active {
+            color: #FF0000;
+            text-decoration: none;
+        }
+        .tools a i.text-value
+        {
+            display: inline-block;            
+            font-style: normal;
+            font-variant: normal;
+            font-weight: normal;
+            line-height: 1em;
+            margin-left: 0.2em;
+            margin-right: 0.2em;
+            text-align: center;
+            text-decoration: inherit;
+            text-transform: none;            
+        }
+        .tools input
+        {
+            border:none;
+            margin:0 5px 0 5px;
+            color:#F90;             
+        }
+        
+        
+        
+        
+        
+        
         </style>
 
     </head>
   <body>
-    
-        <div style="z-index:203; background-color:#FFF; position:fixed; top:30%; left:30%; width:40%; height:auto; min-height:40px; line-height:40px; border:1px solid #CCC">
-            <div style="border-bottom:solid 1px #CCC;color:#3c5880;font-weight:bold; padding-left:5px;">
-                <i class="icon-podcast"></i>
-                登录
-            </div>
-            <div style="margin:8px;">
-                <p>
-                    <div style="display:inline-block;line-height: 20px;   min-height: 20px;    padding: 5px 4px;    vertical-align: middle;border:solid 1px #CCC;">
-                    <i class="icon-user-1"></i>
-                    </div><input type="text" class="input" placeholder="请输入登录账户" maxlength="20" />
-                </p>
-                <p>
-                    <div style="display:inline-block;line-height: 20px;   min-height: 20px;    padding: 5px 4px;    vertical-align: middle;border:solid 1px #CCC;">
-                    <i class="icon-key-1"></i>
-                    </div><input type="password" class="input" placeholder="请输入登录密码" maxlength="20" />
-                </p>
-                <p>
-                    <div style="display:inline-block;line-height: 20px;   min-height: 20px;    padding: 5px 4px;    vertical-align: middle;border:solid 1px #CCC;">
-                        <i class=" icon-params"></i>
-                    </div><input type="text" class="input" placeholder="验证码" maxlength="6" style="width:60px" />
-                    <img src="http://www.baidu.com/img/baidu_jgylogo3.gif" style="width:60px; height:32px; border:solid 1px #CCC; cursor:pointer;" />
-                </p>
-            </div>
-            <div style="border-top:solid 1px #CCC; height:45px; text-align:right;padding-right:10px;">
-                <input type="button" value="登录" class="btn" />
-            </div>
+
+  <div style="display:;">
+        aksd
+        <div class="tools">
+            <a href="#" title="aa"><i class="icon-chart-bar"></i></a>
+            <a href="#" title="bb"><i class="icon-heart-empty"></i></a>
+            <a href="#" title="cc"><i class="icon-ok-circled"></i></a>
+            <a href="#" title="ee"><i class="icon-flag"></i></a>
+            <a href="#" title="dd"><i class="icon-bug"></i></a>
+            <a href="#" title="clcik"><i class="text-value">43223</i></a>
         </div>
+        <div class="tools">
+            <a><input type="text" name="" style="width:60px;" /></a>
+            <a href="#" title="确定更新"><i class="icon-ok"></i></a>
+            <a href="#" title="取消编辑"><i class="icon-cancel"></i></a>
+        </div>
+        2133
+    </div>
+    
         
-        <table>
-            <tr>
-                <th>titl</th>
-                <td>vals</td>
-            </tr>
-        </table>
+        <script type="text/javascript">
+
+
+
+
+            function aaFun(cbk) {
+                JSBox.Close(cbk);
+                JSBox.Alert('abc')
+            }
+            function bbFun(cbk) {
+                alert(cbk);
+            }
+
+            function tsss() {
+
+                var btns = { "走起": 'aaFun', "通天塔": "bbFun", "关闭": 'JSBox.Close' };
+                var c = {
+                    Title: '信息编辑',
+                    Content: 'abd<br />sdfsdf<br />fsd',
+                    Buttons: btns
+                };
+                JSBox.Show(c);
+
+            }
+
+            function AutoClose() {
+                //
+                var k = JSBox.Show({ TypeKey: 'i', Content: 'abczou' });
+                setTimeout(function () {
+                    JSBox.Close(k);
+                }, 2000);
+            }
+
+            function Iframe() {
+                //
+                var btns = { "走起": 'aaFun', "通天塔": "bbFun", "关闭": 'JSBox.Close' };
+                JSBox.Iframe("信息编辑", "tsIframe.aspx", "100", btns);
+            }
+
+
+            $(function () {
+                $("html").niceScroll({ cursorcolor: "#ff9900" });
+
+            });
+    </script>
+    
+    <input type="button" onclick="JSBox.Alert('abc','s')" value="alert" />
+    <input type="button" onclick="JSBox.Confirm('abc','aaFun','1111')" value="confirm" />
+    <input type="button" onclick="tsss()" value="mulitButtons" />
+    <input type="button" onclick="AutoClose()" value="AutoClose" />
+    <input type="button" onclick="Iframe()" value="Iframe" />
+
+
+      
+
+
+
+      <style>
+    
+    table.ttest{width:60%; border-collapse:collapse;}
+    table.ttest tr td{border:solid 1px #CCC; height:35px;padding:5px;}
+    
+    table.ttest tr td.JSInputEditOver{ border-bottom-color:#F00;}
+    
+    .JSEditView{}
+    .JSEditInput{width:60px;display:none;border:none;color:#F90;}
+    .JSEditPanel{display:none; float:right; background:#FFF;}
+    </style>
+    <table class="ttest">
+        <tr>
+            <th width="200">abc</th>
+            <th>123</th>
+        </tr>
+        
+        <tr>
+            <td jseditkey="1" class="emcc">aa1</td>
+            <td jseditkey="1" class="JSIEdit">bb1</td>
+        </tr>
+        <tr>
+            <td jseditkey="2" class="emcc">aa2</td>
+            <td jseditkey="2" class="JSIEdit">bb2</td>
+        </tr>
+        <tr>
+            <td jseditkey="3" class="emcc">aa3</td>
+            <td jseditkey="3" class="JSIEdit">bb3</td>
+        </tr>
+        
+    </table>
+
+    <script>
+
+        $.JSInputEdit.PostUrl = '?cmd=update';
+        $.JSInputEdit.PostProcess = function (cate, key, result) {
+            // 返回  true更新成功，false更新失败
+            return false;
+        };
+
+        $('.JSIEdit').JSInputEdit('num');
+        $('.emcc').JSInputEdit('ccc');
+    </script>
+
+
+
+
+
 
         <input type="button" class="btn green" value="走老你" />        
         <a href="#" class="btn "><i class="icon-spin4 animate-spin"></i></a><br />    
@@ -176,24 +332,18 @@
                 $(".rule-multi-porp").ruleMultiPorp();                
             }
 
-            function message() {
-                //
-                lhgdialog.tips('提示数据', 13, '32X32/hits.png');
-
-                $.dialog.alert('对不起，请选中您要操作的记录！');
-
-                $.dialog.confirm('msg go', function () {
-                    alert('111');
-                });
-
-                $.dialog({
-                    title: "标题多多",
-                    content: 'url:http://baidu.com/',
-                    min: false,
-                    max: false,
-                    lock: false
-                }).max();
+            function checkSXP() {
+                //检查是否显示价格
+                var w = $('#displayTable').width();
+                $('.sxp0')[w < 630 ? 'hide' : 'show']();
+                $('.sxp1')[w < 710 ? 'hide' : 'show']();
+                $('.sxp2')[w < 790 ? 'hide' : 'show']();
             }
+
+            $(function () {
+                //checkSXP();
+                //$(window).resize(checkSXP);
+            });
 
             function navresize() {
                 //根据页面宽度设置是否显示导航菜单
