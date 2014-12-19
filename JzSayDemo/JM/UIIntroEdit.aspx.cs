@@ -10,7 +10,7 @@ using JzSayGen;
 
 namespace JzSayDemo.JM
 {
-    public partial class UIIntroEdit : PageBase
+    public partial class UIIntroEdit : ACPageBase
     {
         protected string IsEdit { get; set; }
         protected IntroLib EditIntro { get; set; }

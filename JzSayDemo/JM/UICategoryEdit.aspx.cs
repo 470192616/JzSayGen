@@ -11,7 +11,7 @@ using System.IO;
 
 namespace JzSayDemo.JM
 {
-    public partial class UICategoryEdit : PageBase
+    public partial class UICategoryEdit : ACPageBase
     {
         protected string IsEdit { get; set; }
         protected CategoryLib EditCate { get; set; }

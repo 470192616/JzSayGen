@@ -10,7 +10,7 @@ using JzSayGen;
 
 namespace JzSayDemo.JM
 {
-    public partial class SysHi : PageBase
+    public partial class SysHi : ACPageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {

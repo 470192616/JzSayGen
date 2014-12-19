@@ -11,7 +11,7 @@ using JzSayGen;
 
 namespace JzSayDemo.JM
 {
-    public partial class UIIntroList : PageBase
+    public partial class UIIntroList : ACPageBase
     {
         protected string SearchName { get; set; }
         protected Int32 SearchStat { get; set; }

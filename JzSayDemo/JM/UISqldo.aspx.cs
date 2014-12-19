@@ -12,7 +12,7 @@ using JzSayGen;
 
 namespace JzSayDemo.JM
 {
-    public partial class UISqldo : PageBase
+    public partial class UISqldo : ACPageBase
     {
         /// <summary>
         /// 

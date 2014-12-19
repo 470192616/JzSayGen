@@ -10,7 +10,7 @@ using JzSayGen;
 
 namespace JzSayDemo.JM
 {
-    public partial class UIResetPass : PageBase
+    public partial class UIResetPass : ACPageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {

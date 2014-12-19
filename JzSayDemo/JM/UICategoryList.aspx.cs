@@ -10,7 +10,7 @@ using JzSayGen;
 
 namespace JzSayDemo.JM
 {
-    public partial class UICategoryList : PageBase
+    public partial class UICategoryList : ACPageBase
     {
         protected string SearchName { get; set; }
         protected Int32 SearchStat { get; set; }

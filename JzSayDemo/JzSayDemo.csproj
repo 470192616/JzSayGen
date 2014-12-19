@@ -371,7 +371,9 @@
     <Compile Include="ClsDll\General.cs" />
     <Compile Include="ClsDll\KeyWordInfo.cs" />
     <Compile Include="ClsDll\MemberPassPort.cs" />
-    <Compile Include="ClsDll\PageBase.cs" />
+    <Compile Include="ClsDll\ACPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -384,84 +386,98 @@
     </Compile>
     <Compile Include="JM\SysFrame.aspx.cs">
       <DependentUpon>SysFrame.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JM\SysFrame.aspx.designer.cs">
       <DependentUpon>SysFrame.aspx</DependentUpon>
     </Compile>
     <Compile Include="JM\SysHi.aspx.cs">
       <DependentUpon>SysHi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JM\SysHi.aspx.designer.cs">
       <DependentUpon>SysHi.aspx</DependentUpon>
     </Compile>
     <Compile Include="JM\UICategoryEdit.aspx.cs">
       <DependentUpon>UICategoryEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JM\UICategoryEdit.aspx.designer.cs">
       <DependentUpon>UICategoryEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="JM\UICategoryList.aspx.cs">
       <DependentUpon>UICategoryList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JM\UICategoryList.aspx.designer.cs">
       <DependentUpon>UICategoryList.aspx</DependentUpon>
     </Compile>
     <Compile Include="JM\UIIntroEdit.aspx.cs">
       <DependentUpon>UIIntroEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JM\UIIntroEdit.aspx.designer.cs">
       <DependentUpon>UIIntroEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="JM\UIIntroList.aspx.cs">
       <DependentUpon>UIIntroList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JM\UIIntroList.aspx.designer.cs">
       <DependentUpon>UIIntroList.aspx</DependentUpon>
     </Compile>
     <Compile Include="JM\UIKeyWordsEdit.aspx.cs">
       <DependentUpon>UIKeyWordsEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JM\UIKeyWordsEdit.aspx.designer.cs">
       <DependentUpon>UIKeyWordsEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="JM\UIKeyWordsList.aspx.cs">
       <DependentUpon>UIKeyWordsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JM\UIKeyWordsList.aspx.designer.cs">
       <DependentUpon>UIKeyWordsList.aspx</DependentUpon>
     </Compile>
     <Compile Include="JM\UIResetPass.aspx.cs">
       <DependentUpon>UIResetPass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JM\UIResetPass.aspx.designer.cs">
       <DependentUpon>UIResetPass.aspx</DependentUpon>
     </Compile>
     <Compile Include="JM\UISqldo.aspx.cs">
       <DependentUpon>UISqldo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JM\UISqldo.aspx.designer.cs">
       <DependentUpon>UISqldo.aspx</DependentUpon>
     </Compile>
     <Compile Include="JM\WaterFall.aspx.cs">
       <DependentUpon>WaterFall.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JM\WaterFall.aspx.designer.cs">
       <DependentUpon>WaterFall.aspx</DependentUpon>
     </Compile>
     <Compile Include="JM\WUCLib\UCTest.ascx.cs">
       <DependentUpon>UCTest.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JM\WUCLib\UCTest.ascx.designer.cs">
       <DependentUpon>UCTest.ascx</DependentUpon>
     </Compile>
     <Compile Include="JM\WUCLib\UCWebFooter.ascx.cs">
       <DependentUpon>UCWebFooter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JM\WUCLib\UCWebFooter.ascx.designer.cs">
       <DependentUpon>UCWebFooter.ascx</DependentUpon>
     </Compile>
     <Compile Include="JM\WUCLib\UCWebHeader.ascx.cs">
       <DependentUpon>UCWebHeader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JM\WUCLib\UCWebHeader.ascx.designer.cs">
       <DependentUpon>UCWebHeader.ascx</DependentUpon>

@@ -10,7 +10,7 @@ using JzSayGen;
 
 namespace JzSayDemo.JM
 {
-    public partial class UIKeyWordsEdit : PageBase
+    public partial class UIKeyWordsEdit : ACPageBase
     {
         protected string IsEdit { get; set; }
         protected KeyWordsLib EditWord { get; set; }
