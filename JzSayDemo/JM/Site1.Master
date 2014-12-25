@@ -23,10 +23,19 @@
         <script src="/assets/kindeditor/lang/zh_CN.js" type="text/javascript"></script>        
         <script src="/assets/script/jquery.datepicker.js" type="text/javascript"></script>
 
+        <script src="/assets/script/JSBox.js" type="text/javascript"></script>
+        <script src="/assets/script/jquery.JSInputEdit.js" type="text/javascript"></script>
+
+        <style type="text/css">
+        
+        </style>
         <asp:ContentPlaceHolder ID="headerJsAndCss" runat="server"></asp:ContentPlaceHolder>
     </head>
 <body>
-    <div style="margin:5px;">
+    <div style="line-height:32px;">
+        <a href="#">首页</a> <i class="icon-right-open-mini"></i> 信息
+    </div>
+    <div style="margin:0px;">
         <asp:ContentPlaceHolder ID="Holder1" runat="server"></asp:ContentPlaceHolder>
     </div>
     <script type="text/javascript">
@@ -51,6 +60,7 @@
                     items: ['source', 'code', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist', 'insertunorderedlist', '|', 'image', 'multiimage', 'link', 'fullscreen']
                 });
             });
+            $("html").niceScroll({ cursorcolor: "#ff9900" });
         });
     </script>    
     <asp:ContentPlaceHolder ID="footerJs" runat="server"></asp:ContentPlaceHolder>    

@@ -18,7 +18,11 @@
         <script src="/assets/script/jquery.nicescroll.js" type="text/javascript"></script>        
         <script src="/assets/script/jquery.formexten.js" type="text/javascript"></script>
 
+        <script src="/assets/script/JSBox.js" type="text/javascript"></script>
+        <script src="/assets/script/jquery.JSInputEdit.js" type="text/javascript"></script>
+
         <style type="text/css">
+            html,body{overflow:hidden;}
             .mainHeader{height:60px; position:fixed;   right:0;    top:0;    width:100%;    z-index: 11; background-color:#F5F5F5; border-bottom:solid 3px #3c5880;}
             .mainSider{bottom: 0;    left: 0;    position: absolute;    top: 60px;    width:180px;background-color:#f6f7f7;    border-right: 1px solid #dbdbdb;}
             .mainContainer{ bottom: 0;    left: 185px;    position: absolute;    right: 0;    top: 60px;}            
@@ -113,9 +117,14 @@
 
     </div>
     <div class="mainContainer">
-        <iframe id="mainframe" name="mainframe" frameborder="0" marginheight="0" marginwidth="0" src="SysHi.aspx"></iframe>
+        <iframe id="mainframe" name="mainframe" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="SysHi.aspx"></iframe>
     </div>
-
     
+
+    <script type="text/javascript">
+        $(function () {
+            $(".mainSider").niceScroll({ cursorcolor: "#ff9900" });
+        });
+    </script>
 </body>
 </html>

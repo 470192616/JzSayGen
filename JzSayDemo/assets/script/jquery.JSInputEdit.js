@@ -54,7 +54,7 @@
         }
     };
 
-    $.fn.JSInputEdit = function (cate, url, postProcessFn) {
+    $.fn.JSInputEdit = function (cate, inputWidth) {
         //文字编辑器                
         var s = [];
         s.push('<div id="JSEditPanel' + cate + '#KEY#" class="JSEditPanel">');
@@ -71,7 +71,7 @@
             var v = o.html();
             var x = [];
             x.push('<label id="JSEditView' + cate + '' + k + '" class="JSEditView">' + v + '</label>');
-            x.push('<input type="text" id="JSEditInput' + cate + '' + k + '" onkeypress="$.JSInputEdit.KeyPress(\'' + cate + '\',\'' + k + '\',event.keyCode||event.which)" class="JSEditInput" value="' + v + '" />');
+            x.push('<input type="text" id="JSEditInput' + cate + '' + k + '" style="width:' + inputWidth + ';" onkeypress="$.JSInputEdit.KeyPress(\'' + cate + '\',\'' + k + '\',event.keyCode||event.which)" class="JSEditInput" value="' + v + '" />');
             x.push(cmd.replace(new RegExp('#KEY#', "gi"), k));
             o.attr('jseditcate', cate).empty().append(x.join(''));
 
@@ -103,6 +103,6 @@ $.JSInputEdit.PostProcess = function (cate, key, result) {
     return false;
 };
 
-$('.JSIEdit').JSInputEdit('num');
-$('.emcc').JSInputEdit('ccc');
+$('.MoneyPanel').JSInputEdit('cateType1','50px');
+$('.NumberPanel').JSInputEdit('cateType2','60px');
 */

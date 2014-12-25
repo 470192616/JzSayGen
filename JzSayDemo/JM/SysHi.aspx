@@ -6,8 +6,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Holder1" runat="server">
     做有价值的事。
+    <input type="button" onclick="parent.JSBox.Alert('abc','s')" value="alert" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footerJs" runat="server">
     
-
 </asp:Content>

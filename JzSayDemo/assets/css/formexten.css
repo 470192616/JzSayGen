@@ -47,13 +47,20 @@
 
 
 /* 对话框 */
-.JSBoxMask{display:none;float:none; clear:both; background-color:#666; position:fixed; top:0px; left:0px; width:100%; height:100%; opacity:0.3; filter:alpha(opacity=30);}
-                
-        .JSBoxPanel{ -moz-box-shadow: 0px 0px 6px 3px #666; -webkit-box-shadow: 0px 0px 6px 3px #666; box-shadow: 0px 0px 6px 3px #666; display:none; position:fixed; top:20%; left:25%; width:50%; height:auto; min-width:100px; background-color:#FFF; }
-        
+.JSBoxMask{display:none;float:none; clear:both; background-color:#666; position:fixed; top:0px; left:0px; width:100%; height:100%; opacity:0.3; filter:alpha(opacity=30);}                
+        .JSBoxPanel{ -moz-box-shadow: 0px 0px 6px 3px #666; -webkit-box-shadow: 0px 0px 6px 3px #666; box-shadow: 0px 0px 6px 3px #666; display:none; position:fixed; top:20%; left:15%; width:70%; height:auto; min-width:100px; background-color:#FFF; }        
         .JSBoxPanelHeader{background-color:#06C; line-height:46px; color:#FFF; font-weight:bold;}
         .JSBoxPanelBodyer{margin:10px;color:#666}
-        .JSBoxPanelFooter{border-top:1px solid #E4E4E4;background-color:#F4F4F4; line-height:44px;text-align:right;padding-right:20px;}
+        .JSBoxPanelFooter{border-top:1px solid #FFF;background-color:#FFF;text-align:center;}
+        .JsBoxPanelFooterBtn{width:100%;font-weight:bold;letter-spacing:5px;}
+        .JsBoxPanelFooterBtnPanel{border:none;text-align:center;vertical-align:middle;padding:0px}        
+        .JSBoxPanelHeaderBtnClose{float:right; display:block; width:46px; height:46px; line-height:46px; overflow:hidden; text-align:center;color:#FFF; text-decoration:none;}
+        .JSBoxPanelHeaderBtnClose:hover {background-color:#66C;color:#FFF;}
+        .JSBoxPanelHeaderBtnClose:visited{color:#FFF;}
+        .JSBoxPanelHeaderBtnClose:link{color:#FFF;}
         
-        .JSBoxPanelHeader a.closeBtn{float:right; display:block; width:46px; height:46px; line-height:46px; overflow:hidden; text-align:center;color:#FFF; text-decoration:none;}
-        .JSBoxPanelHeader a.closeBtn:hover {background-color:#66C;}
+/* 编辑盒子 */
+.JSInputEditOver{ border-bottom-color:#F00;}
+    .JSEditView{}
+    .JSEditInput{display:none;border:none;color:#F90;}
+    .JSEditPanel{display:none; float:right; background:#FFF;}

@@ -2,6 +2,7 @@
 <%@ Import Namespace="JzSayDemo.ClsDll" %>
 <%@ Import Namespace="JzSayGen" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headerJsAndCss" runat="server">
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Holder1" runat="server">
     <div>
@@ -50,7 +51,7 @@
             <td><%=curKey%></td>            
             <td><%=d.KeyWord%></td>
             <td><%=d.KeyLength%></td>
-            <td><%=d.KeyWeight%></td>
+            <td jseditkey="<%=curKey%>" class="keyWeight"><%=d.KeyWeight%></td>
             <td><%=d.CreateTS.ParseDateTimeTS().ToString("yyyy-MM-dd")%></td>
             <td class="EGenStat<%=d.Stat %>"><%=EnumExten.GetTip(EnumExten.ParseInt32<EGenStat>(d.Stat))%></td>
             <td align="center">
@@ -77,8 +78,16 @@
             //
             location = '<%=this.GoUrl.UrlDecode() %>';
         }
-        
 
+        $(function () {
+            $.JSInputEdit.PostUrl = '?cmd=update';
+            $.JSInputEdit.PostProcess = function (cate, key, result) {
+                // 返回  true更新成功，false更新失败
+                return false;
+            };
+
+            $('.keyWeight').JSInputEdit('UpdateWeight','25px');
+        });
     </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footerJs" runat="server">

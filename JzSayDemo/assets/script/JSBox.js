@@ -1,7 +1,7 @@
 ﻿var JSBox = {
     MaskObj: null, //蒙板对象
     MaskIsShow: false, //蒙板是否显示
-    CurIndex: 300, // 当前z-index的值
+    CurIndex: 9100, // 当前z-index的值
     BoxCount: 0, //窗口数量
     MaskShow: function () {
         //显示蒙板
@@ -40,7 +40,7 @@
             s.push('     <i class="icon-th-large"></i>');
             s.push('     <label style="font-size:14px;">' + c.Title + '</label>');
             if (c.ShowClose) {
-                s.push(' <a href="javascript:;" onclick="JSBox.Close(\'' + idStr + '\')" class="closeBtn" title="关闭窗口"><i class="icon-cancel"></i></a>');
+                s.push(' <a href="javascript:;" onclick="JSBox.Close(\'' + idStr + '\')" class="JSBoxPanelHeaderBtnClose" title="关闭窗口"><i class="icon-cancel"></i></a>');
             }
             s.push('</div>');
         }
@@ -67,11 +67,31 @@
         s.push('    </div>');
 
         if (c.Buttons) {
-            s.push('<div class="JSBoxPanelFooter" id="JSBoxFoot' + idStr + '">');
+            var buttons = [];
             for (var i in c.Buttons) {
-                s.push(' <input type="button" class="btn" value="' + i + '" onclick="' + c.Buttons[i] + '(\'' + idStr + '\',\'' + i + '\')" /> ');
+                if (typeof (c.Buttons[i]) != 'string') continue;                
+                buttons.splice(0, 0, { "Tip": i, "Fun": c.Buttons[i] });
             }
-            s.push('</div>');
+            if (buttons.length > 0) {
+                var btnArray = [];
+                var btnColor = ['', 'green', 'yellow', 'violet', 'gray']; //最多5个按钮
+                for (var b = 0; b < buttons.length; b++) {
+                    btnArray.push('<input type="button" class="btn ' + btnColor[b] + ' JsBoxPanelFooterBtn" value="' + buttons[b]['Tip'] + '" onclick="' + buttons[b]['Fun'] + '(\'' + idStr + '\',\'' + buttons[b]['Tip'] + '\')" />');
+                }
+                s.push('<div class="JSBoxPanelFooter" id="JSBoxFoot' + idStr + '">');
+                s.push('<table>');
+                s.push('<tr>');
+                for (var b = btnArray.length - 1; b > -1; b--) {
+                    s.push('<td class="JsBoxPanelFooterBtnPanel">');
+                    s.push(btnArray[b]);
+                    s.push('</td>');
+                }
+                s.push('</tr>');
+                s.push('</table>');
+                s.push('</div>');
+            }
+
+
         }
 
         s.push('</div>');
