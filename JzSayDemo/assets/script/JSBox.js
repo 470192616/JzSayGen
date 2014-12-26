@@ -1,4 +1,8 @@
-﻿var JSBox = {
+﻿/*
+弹出对话框 v1.0
+http://www.jzsay.com/
+*/
+var JSBox = {
     MaskObj: null, //蒙板对象
     MaskIsShow: false, //蒙板是否显示
     CurIndex: 9100, // 当前z-index的值

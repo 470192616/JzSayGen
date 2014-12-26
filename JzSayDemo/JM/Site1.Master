@@ -24,6 +24,7 @@
         <script src="/assets/script/jquery.datepicker.js" type="text/javascript"></script>
 
         <script src="/assets/script/JSBox.js" type="text/javascript"></script>
+        <script src="/assets/script/JSTipBox.js" type="text/javascript"></script>
         <script src="/assets/script/jquery.JSInputEdit.js" type="text/javascript"></script>
 
         <style type="text/css">
@@ -33,7 +34,7 @@
     </head>
 <body>
     <div style="line-height:32px;">
-        <a href="#">首页</a> <i class="icon-right-open-mini"></i> 信息
+        <a href="SysHi.aspx">首页</a> <i class="icon-right-open-mini"></i> 信息
     </div>
     <div style="margin:0px;">
         <asp:ContentPlaceHolder ID="Holder1" runat="server"></asp:ContentPlaceHolder>

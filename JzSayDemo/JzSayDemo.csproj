@@ -326,6 +326,7 @@
     <Content Include="assets\script\jquery.knob.min.js" />
     <Content Include="assets\script\jquery.nicescroll.js" />
     <Content Include="assets\script\JSBox.js" />
+    <Content Include="assets\script\JSTipBox.js" />
     <Content Include="assets\script\uploadify\jquery.uploadify.js" />
     <Content Include="assets\script\uploadify\jquery.uploadify.min.js" />
     <Content Include="assets\script\uploadify\uploadify-cancel.png" />

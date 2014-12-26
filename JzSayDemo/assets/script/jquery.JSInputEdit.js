@@ -1,4 +1,8 @@
-﻿(function ($) {
+﻿/*
+单行文本编辑 v1.0
+http://www.jzsay.com/
+*/
+(function ($) {
 
     $.JSInputEdit = {
         PostUrl: '',

@@ -19,6 +19,7 @@
         <script src="/assets/script/jquery.formexten.js" type="text/javascript"></script>
 
         <script src="/assets/script/JSBox.js" type="text/javascript"></script>
+        <script src="/assets/script/JSTipBox.js" type="text/javascript"></script>
         <script src="/assets/script/jquery.JSInputEdit.js" type="text/javascript"></script>
 
         <style type="text/css">
@@ -44,42 +45,13 @@
             .vss a{padding-left:30px;}
         </style>
     </head>
-<body>
-    <div id="PopMsgMask" style="display:none; z-index:200; background-color:#666; position:fixed; top:0px; left:0px; width:100%; height:100%; opacity:0.3; filter:alpha(opacity=30);"></div>    
-    <div id="PopMsg" style="display:none; z-index:201; background-color:#FFF; position:fixed; top:30%; left:30%; width:40%; height:auto; min-height:40px; line-height:40px; border:0px solid #CCC">
-        <div id="PopMsgHead" style="border-bottom:solid 1px #CCC;color:#3c5880;font-weight:bold; padding-left:5px;"><i class="icon-th-large"></i> 系统提示</div>
-        <div id="PopMsgBody" style="margin:8px;color:#666;">
-            <i class="icon-ok-circled" style="font-size:35px;color:#78C317"></i>
-            <i class="icon-cancel-circled" style="font-size:35px;color:#F00"></i>
-            <i class="icon-help-circled" style="font-size:35px;color:#E55F00"></i>
-            <i class="icon-info-circled" style="font-size:35px;color:#438EB9"></i>
-             次级贷款
-        </div>
-        <div id="PopMsgBtn" style="border-top:solid 1px #CCC; height:45px; text-align:right;padding-right:10px;">
-            <input type="button" class="btn" value="确 定" />
-            <a class="btn">
-                <i class="icon-off"></i> 走你  #F07444
-            </a>
-        </div>
-    </div>
-	
-	<div id="PopAlert" style="display:none;z-index:203; background-color:#FFF; position:fixed; top:30%; left:30%; width:40%; height:auto; min-height:40px; line-height:40px; border:1px solid #CCC">
-		<div style="margin:8px;">
-			<i class="icon-ok-circled" style="font-size:35px;color:#78C317"></i>
-			<i class="icon-cancel-circled" style="font-size:35px;color:#F00"></i>
-			<i class="icon-help-circled" style="font-size:35px;color:#E55F00"></i>
-			<i class="icon-info-circled" style="font-size:35px;color:#438EB9"></i>
-            <i class="icon-spin4 animate-spin"></i>
-			msg
-		</div>
-	</div>
-
+<body>    
     <div class="mainHeader">
         <a href="http://kindeditor.net" target="_blank" style="color:#F00">kindeditor.net编辑器</a>
         <a href="WaterFall.aspx" target="_blank">瀑布流</a>
         <a href="zui.html" target="_blank">基本元素</a>
         <a href="UIResetPass.aspx" target="mainframe">修改密码</a>
-        <a href="/AjaxBin/Bridge-LogOutSys.ashx">退出登录</a>
+        <a href="/AjaxBin/Bridge-LogOutSys.ashx">退出登录</a>        
     </div>
     <div class="mainSider">
 
