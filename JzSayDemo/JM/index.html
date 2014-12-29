@@ -12,55 +12,32 @@
         <link rel="stylesheet" href="/assets/css/fontello.css" type="text/css" />
         <link rel="stylesheet" href="/assets/css/animation.css" type="text/css" />
         <link rel="stylesheet" href="/assets/css/formexten.css" type="text/css" />                
+        <link rel="stylesheet" href="/assets/css/JMLogin.css" type="text/css" />
 
         <script src="/assets/script/jquery-1.10.2.min.js" type="text/javascript"></script>        
-        <script src="/assets/script/jquery.formexten.js" type="text/javascript"></script>
-
+        <script src="/assets/script/JSBox.js" type="text/javascript"></script>
     </head>
-  <body>
-      
+  <body>      
         <iframe src="/assets/blank.html" name="FormPostTag" style="display:none;"></iframe>
         <form method="post" target="FormPostTag" action="/AjaxBin/Bridge-LoginSys.ashx">
-        <div style="z-index:203; background-color:#FFF; position:fixed; top:30%; left:35%; width:30%; height:auto; min-height:40px; line-height:40px; border:1px solid #CCC">
-            <div style="border-bottom:solid 1px #CCC;color:#3c5880;font-weight:bold; padding-left:5px;">
-                <i class="icon-podcast"></i>
-                登录
-            </div>
+        <div class="loginPan">
+            <div class="loginTip"><i class="icon-podcast"></i>系统登录</div>
             <div style="margin:8px;padding-left:30px;">                
-                    <div style="display:inline-block;line-height:20px;min-height:20px;padding:5px 4px;vertical-align: middle;border:solid 1px #CCC;">
-                    <i class="icon-user-1"></i>
-                    </div><input type="text" name="userName" class="input" placeholder="请输入登录账户" maxlength="20" />
+                <div class="loginLine"><i class="icon-user-1"></i></div><input type="text" name="userName" class="input" placeholder="请输入登录账户" maxlength="20" style="border-left:none;" />
                 <br />
-                    <div style="display:inline-block;line-height:20px;min-height:20px;padding:5px 4px;vertical-align: middle;border:solid 1px #CCC;">
-                    <i class="icon-key-1"></i>
-                    </div><input type="password" name="userPass" class="input" placeholder="请输入登录密码" maxlength="20" />
+                <div class="loginLine"><i class="icon-key-1"></i></div><input type="password" name="userPass" class="input" placeholder="请输入登录密码" maxlength="20" style="border-left:none;" />
                 <br />
                 <div id="safePanel" style="display:none">
-                    <div style="display:inline-block;line-height: 20px;min-height: 20px;padding: 5px 4px;vertical-align: middle;border:solid 1px #CCC;">
-                        <i class="icon-params"></i>
-                    </div><input type="text" name="safeCode" class="input" placeholder="验证码" maxlength="6" style="width:55px" />
-                    <img src="/AjaxBin/Bridge-SafeImage.ashx" id="safeImg" style="height:32px; border:solid 1px #CCC; cursor:pointer;" />
+                    <div class="loginLine"><i class="icon-params"></i></div><input type="text" name="safeCode" class="input" placeholder="验证码" maxlength="6" style="width:55px;border-left:none;" />
+                    <img src="/AjaxBin/Bridge-SafeImage.ashx" id="safeImg" />
                 </div>
             </div>
-            <div style="border-top:solid 1px #CCC; height:45px; text-align:right;padding-right:10px;">
-                <input type="submit" value="登录" class="btn" />
-            </div>
+            <div class="loginCtrl"><input type="submit" value="登录" class="btn" /></div>
         </div>
         </form>
-
-        <script>
-            $('#safeImg').click(function () {
-                $(this).attr('src', '/AjaxBin/Bridge-SafeImage.ashx?v=' + Math.random());
-            });
-            function PostCallBack(json) {
-                if (json.Code != 0) {
-                    alert(json.Data);
-                    $('#safePanel').show();
-                    return;
-                }
-                top.location = '/JM/SysFrame.aspx';
-            }
+        <script type="text/javascript">
+            $('#safeImg').click(function () { $(this).attr('src', '/AjaxBin/Bridge-SafeImage.ashx?v=' + Math.random()); });
+            function PostCallBack(json) { if (json.Code != 0) { JSBox.Alert(json.Data, 'e'); $('#safePanel').show(); return; } top.location = '/JM/SysFrame.aspx'; }
         </script>
-
 </body>
 </html>

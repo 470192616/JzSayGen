@@ -64,6 +64,7 @@ namespace JzSayDemo.ClsDll
         public void LogOutSys()
         {
             MemberPassPort.SigOut();
+            SysLogs.Write(ELogs.LogOut);
             this.CurrentContext.Response.Redirect("/");
         }
 
@@ -74,7 +75,7 @@ namespace JzSayDemo.ClsDll
         /// <param name="userPass"></param>
         /// <param name="safeCode"></param>
         /// <returns></returns>
-        [AjaxBin(ResponseFormat = "FormTarget",RequestMethod="POST")]
+        [AjaxBin(ResponseFormat = "FormTarget", RequestMethod = "POST")]
         public string LoginSys(string userName, string userPass, string safeCode)
         {
             this.Code = 1;
@@ -100,17 +101,19 @@ values ('admin','C3ED740FA8','XE889GwjXRuwQ+NsHvJei4t72bCeboOSFpwzCb25n/Y=',
 20141208154515289,20141208154515289)
              */
 
+            SysLogs.Write(ELogs.TryLogin, userName.GetLeft(40) + ";" + General.GetClientIP + ";" + General.GetClientOS);
             using (DBDataContext db = new DBDataContext(SqlHelper.DB_CONN_STRING))
             {
-                var su = db.WebSafe.FirstOrDefault(x => x.LoginName == userName);
+                var su = db.WebSafe.FirstOrDefault(x => x.LoginName == userName.GetLeft(30));
                 if (su == null) return "登录账户不存在或登录密码错误";
-                string mp = (userPass + su.LoginSalt).SHA256();
+                string mp = (userPass.GetLeft(30) + su.LoginSalt).SHA256();
                 if (su.LoginPass.Equals(mp) == false) return "登录账户不存在或登录密码错误";
 
                 MemberPassPort.SigIn(new MemberPassPort()
                 {
                     UserKey = su.LoginName
                 }, this.CurrentContext);
+                SysLogs.Write(ELogs.Login);
             }
 
             this.Code = 0;

@@ -69,7 +69,7 @@
 
                     <li><a href="UISqldo.aspx" target="mainframe"><i class="icon-right-dir"></i><span>数据操作</span></a></li>
                     
-                    
+                    <li><a href="UILogs.aspx" target="mainframe"><i class="icon-sliders"></i><span>系统日志</span></a></li>
                 </ul>
             </li>
             

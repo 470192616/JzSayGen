@@ -1,0 +1,6 @@
+﻿body{ background:transparent url(/assets/image/background/1.jpg) no-repeat scroll 0% 0%;background-size:cover;}
+.loginPan{z-index:203; background-color:#FFF; position:fixed; top:20%; left:35%; width:30%; height:auto; min-height:40px; line-height:40px; border-top:1px solid #16a0d3}
+.loginTip{border-bottom:solid 1px #16a0d3; font-size:20px; color:#FFF; background-color:#16a0d3; font-weight:bold; padding-left:5px;}
+.loginLine{display:inline-block;line-height:20px;min-height:20px;padding:5px 4px;vertical-align: middle;border:solid 1px #CCC;}
+#safePanel img{height:32px; border:solid 1px #CCC; cursor:pointer;}
+.loginCtrl{border-top:solid 1px #16a0d3; text-align:right;padding:5px 10px;}

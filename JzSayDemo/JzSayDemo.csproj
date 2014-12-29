@@ -69,9 +69,12 @@
     <Content Include="assets\css\fontello.css" />
     <Content Include="assets\css\formexten.css" />
     <Content Include="assets\css\Jcrop.gif" />
+    <Content Include="assets\css\JMLogin.css" />
     <Content Include="assets\css\jquery.Jcrop.css" />
     <Content Include="assets\css\jquery.Jcrop.min.css" />
     <Content Include="assets\font\fontello.svg" />
+    <Content Include="assets\image\background\1.jpg" />
+    <Content Include="assets\image\background\2.jpg" />
     <Content Include="assets\image\no.jpg" />
     <Content Include="assets\kindeditor\examples\auto-height.html" />
     <Content Include="assets\kindeditor\examples\colorpicker.html" />
@@ -343,6 +346,7 @@
     <Content Include="JM\UIIntroList.aspx" />
     <Content Include="JM\UIKeyWordsEdit.aspx" />
     <Content Include="JM\UIKeyWordsList.aspx" />
+    <Content Include="JM\UILogs.aspx" />
     <Content Include="JM\UIResetPass.aspx" />
     <Content Include="JM\UISqldo.aspx" />
     <Content Include="JM\WaterFall.aspx" />
@@ -352,7 +356,9 @@
     <Content Include="JM\zui.html" />
     <Content Include="media.htm" />
     <Content Include="sn.txt" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -375,6 +381,7 @@
     <Compile Include="ClsDll\ACPageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ClsDll\SysLogs.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -440,6 +447,13 @@
     </Compile>
     <Compile Include="JM\UIKeyWordsList.aspx.designer.cs">
       <DependentUpon>UIKeyWordsList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JM\UILogs.aspx.cs">
+      <DependentUpon>UILogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JM\UILogs.aspx.designer.cs">
+      <DependentUpon>UILogs.aspx</DependentUpon>
     </Compile>
     <Compile Include="JM\UIResetPass.aspx.cs">
       <DependentUpon>UIResetPass.aspx</DependentUpon>
