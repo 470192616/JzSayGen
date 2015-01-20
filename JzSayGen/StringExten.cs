@@ -169,6 +169,28 @@ namespace JzSayGen
         }
 
         /// <summary>
+        /// 字符串首字母小写
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string FirstLeterLower(this string s)
+        {
+            if (string.IsNullOrEmpty(s)) return "";
+            return s[0].ToString().ToLower() + s.Substring(1);
+        }
+
+        /// <summary>
+        /// 字符串首字母大写
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string FirstLeterUpper(this string s)
+        {
+            if (string.IsNullOrEmpty(s)) return "";
+            return s[0].ToString().ToUpper() + s.Substring(1);
+        }
+
+        /// <summary>
         /// 清除左右的字符串
         /// </summary>
         /// <param name="s">原始字符串</param>
