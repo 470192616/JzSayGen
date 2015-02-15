@@ -15,6 +15,28 @@ namespace JzSayGen
     {
 
         /// <summary>
+        /// 日期转时间戳
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        public static long ToTimestamp(this DateTime dateTime)
+        {
+            var start = new DateTime(1970, 1, 1, 0, 0, 0);
+            return System.Convert.ToInt64((dateTime - start).TotalSeconds);
+        }
+
+        /// <summary>
+        /// 时间戳转日期
+        /// </summary>
+        /// <param name="timestamp"></param>
+        /// <returns></returns>
+        public static DateTime ToDateTime(this long timestamp)
+        {
+            var start = new DateTime(1970, 1, 1, 0, 0, 0);
+            return start.AddSeconds(timestamp);
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="ts">DateTime yyyyMMddHHmmssfff</param>

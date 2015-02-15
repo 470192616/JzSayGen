@@ -9,7 +9,22 @@ namespace JzSayGen
     /// 基础页
     /// </summary>
     public class UIPageBase : System.Web.UI.Page
-    {        
+    {
+        /// <summary>
+        /// 单选/多选 类型
+        /// </summary>
+        protected enum GroupListBoxType
+        {
+            /// <summary>
+            /// 单选
+            /// </summary>
+            radio,
+
+            /// <summary>
+            /// 多选
+            /// </summary>
+            checkbox
+        }
 
         /// <summary>
         /// 
@@ -124,5 +139,41 @@ namespace JzSayGen
             }
             return sb.ToString();
         }
+
+        /// <summary>
+        /// 单选/多选 列表
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="type">类型</param>
+        /// <param name="name">表单名称</param>
+        /// <param name="labelAttStr">label的附加字符串</param>
+        /// <param name="inputAttStr">input的附加字符串</param>
+        /// <param name="optionItem">选项</param>
+        /// <param name="selectedValue">默认选中值</param>
+        /// <returns></returns>
+        protected string ShowGroupListBoxs<T>(GroupListBoxType type, string name, string labelAttStr, string inputAttStr, Dictionary<T, string> optionItem, params T[] selectedValue)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var kv in optionItem)
+            {
+                string isChecked = (selectedValue != null && selectedValue.Any(x => x.ToString() == kv.Key.ToString())) ? " checked=\"checked\"" : "";
+                sb.AppendFormat("<label" + labelAttStr + "><input type=\"" + type.ToString() + "\" name=\"" + name + "\" value=\"{0}\"{2}" + inputAttStr + " />{1}</label>", kv.Key, kv.Value, isChecked);
+            }
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// 单选/多选 列表
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="type">类型</param>
+        /// <param name="name">表单名称</param>
+        /// <param name="optionItem">选项</param>
+        /// <param name="selectedValue">默认选中值</param>
+        /// <returns></returns>
+        protected string ShowGroupListBoxs<T>(GroupListBoxType type, string name, Dictionary<T, string> optionItem, params T[] selectedValue)
+        {
+            return ShowGroupListBoxs<T>(type, name, "", "", optionItem, selectedValue);
+        }        
     }
 }
