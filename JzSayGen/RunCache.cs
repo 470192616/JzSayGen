@@ -41,6 +41,17 @@ namespace JzSayGen
         /// <param name="minutes">过期分钟数</param>
         public static void Set(string key, object val, int minutes)
         {
+            HttpRuntime.Cache.Insert(key, val, null, DateTime.Now.AddMinutes(minutes), Cache.NoSlidingExpiration);
+        }
+
+        /// <summary>
+        /// 创建指定最后一次访问时间间隔的缓存项
+        /// </summary>
+        /// <param name="key">缓存Key</param>
+        /// <param name="val">缓存对象</param>
+        /// <param name="minutes">最后一次访问多少分钟后没人访问就过期</param>
+        public static void SetVist(string key, object val, int minutes)
+        {
             HttpRuntime.Cache.Insert(key, val, null, Cache.NoAbsoluteExpiration, new TimeSpan(0, minutes, 0));
         }
 
