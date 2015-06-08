@@ -33,6 +33,16 @@ namespace JzSayGen
         public static DateTime GetNow { get { return DateTime.Now; } }
 
         /// <summary>
+        /// 最大日期 2088-08-08 08:08:08
+        /// </summary>
+        public static DateTime DateMax = DateTime.Parse("2088-08-08 08:08:08");
+
+        /// <summary>
+        /// 最小日期 2008-08-08 08:08:08
+        /// </summary>
+        public static DateTime DateMin = DateTime.Parse("2008-08-08 08:08:08");
+
+        /// <summary>
         /// 获取当前日期时间数字 DateTime.Now.ToString("yyyyMMddHHmmssfff")
         /// </summary>
         public static Int64 GetNowTS { get { return Int64.Parse(DateTime.Now.ToString("yyyyMMddHHmmssfff")); } }
