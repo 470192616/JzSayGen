@@ -18,6 +18,63 @@ namespace JzSayGen
         public static string DB_CONN_STRING { get; set; }
 
         /// <summary>
+        /// 执行事务操作 空字符串表示处理成功，否则返回错误信息
+        /// </summary>
+        /// <param name="tranBlock">事务执行的语句块，空字符串表示处理成功，否则返回错误信息</param>
+        /// <returns></returns>
+        public static string ExecuteTransaction(params Func<SqlCommand, string>[] tranBlock)
+        {
+            return ExecuteTransaction(SqlHelper.DB_CONN_STRING, tranBlock);
+        }
+
+        /// <summary>
+        /// 执行事务操作 空字符串表示处理成功，否则返回错误信息
+        /// </summary>
+        /// <param name="connectionstr"></param>
+        /// <param name="tranBlock">事务执行的语句块，空字符串表示处理成功，否则返回错误信息</param>
+        /// <returns></returns>
+        public static string ExecuteTransaction(string connectionstr, params Func<SqlCommand, string>[] tranBlock)
+        {
+            string errmsg = "";
+            if (tranBlock == null || tranBlock.Count() == 0) return "没有要执行的语句块";
+            using (SqlConnection conn = new SqlConnection(connectionstr))
+            {
+                conn.Open();
+                //using (SqlTransaction tx = conn.BeginTransaction(IsolationLevel.Serializable)) //所有事务顺序执行 保证数据一致、完整
+                using (SqlTransaction tx = conn.BeginTransaction()) //IsolationLevel.RepeatableRead  默认，可能出现幻读
+                {
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Connection = conn;
+                        cmd.Transaction = tx;
+                        try
+                        {
+                            foreach (var tran in tranBlock)
+                            {
+                                cmd.Parameters.Clear();
+                                errmsg = tran(cmd);
+                                if (string.IsNullOrEmpty(errmsg) == false)
+                                {
+                                    tx.Rollback();
+                                    break;
+                                }
+                            }
+                        }
+                        catch (Exception exerr)
+                        {
+                            errmsg = exerr.ToString();
+                            tx.Rollback();
+                        }
+                        if (string.IsNullOrEmpty(errmsg)) tx.Commit();
+                        cmd.Dispose();
+                    }
+                }
+                conn.Close();
+            }
+            return errmsg;
+        }
+
+        /// <summary>
         /// 列表数据查询
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>

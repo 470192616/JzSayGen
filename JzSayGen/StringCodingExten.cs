@@ -106,16 +106,16 @@ namespace JzSayGen
         /// AES256 ECB PKCS7 加密
         /// </summary>
         /// <param name="s"></param>
-        /// <param name="key">加密密钥，有效长度最短1位最长只截取32位</param>
+        /// <param name="key32">加密密钥，有效长度最短1位最长只截取32位</param>
         /// <param name="isHex">是否十六进制编码 默认false</param>
         /// <returns></returns>
-        public static string AESEncrypt(this string s, string key, bool isHex = false)
+        public static string AESEncrypt(this string s, string key32, bool isHex = false)
         {
             if (s.IsNullOrEmpty()) return "";
-            if (key.IsNullOrEmpty()) return "";
+            if (key32.IsNullOrEmpty()) return "";
 
             RijndaelManaged rm = new RijndaelManaged();
-            rm.Key = UTF8Encoding.UTF8.GetBytes(key.PadRight(32, '*').Substring(0, 32));
+            rm.Key = UTF8Encoding.UTF8.GetBytes(key32.PadRight(32, '*').Substring(0, 32));
             rm.Mode = CipherMode.ECB;
             rm.Padding = PaddingMode.PKCS7;
 
@@ -131,16 +131,16 @@ namespace JzSayGen
         /// AES256 ECB PKCS7 解密
         /// </summary>
         /// <param name="s"></param>
-        /// <param name="key">解密密钥，有效长度最短1位最长只截取32位</param>
+        /// <param name="key32">解密密钥，有效长度最短1位最长只截取32位</param>
         /// <param name="isHex">是否十六进制编码 默认false</param>
         /// <returns></returns>
-        public static string AESDecrypt(this string s, string key, bool isHex = false)
+        public static string AESDecrypt(this string s, string key32, bool isHex = false)
         {
             if (s.IsNullOrEmpty()) return "";
-            if (key.IsNullOrEmpty()) return "";
+            if (key32.IsNullOrEmpty()) return "";
 
             RijndaelManaged rm = new RijndaelManaged();
-            rm.Key = UTF8Encoding.UTF8.GetBytes(key.PadRight(32, '*').Substring(0, 32));
+            rm.Key = UTF8Encoding.UTF8.GetBytes(key32.PadRight(32, '*').Substring(0, 32));
             rm.Mode = CipherMode.ECB;
             rm.Padding = PaddingMode.PKCS7;
 
@@ -156,19 +156,19 @@ namespace JzSayGen
         /// AES256 CBC PKCS7 加密 与php、java等交互
         /// </summary>
         /// <param name="s"></param>
-        /// <param name="key">32位密钥</param>
+        /// <param name="key32">32位密钥</param>
         /// <returns></returns>
-        public static string AESEncryptSwap(this string s, string key)
+        public static string AESEncryptSwap(this string s, string key32)
         {
             if (s.IsNullOrEmpty()) return "";
-            if (key.IsNullOrEmpty() || key.Length != 32) return "";
+            if (key32.IsNullOrEmpty() || key32.Length != 32) return "";
 
             RijndaelManaged aes = new RijndaelManaged();
             aes.KeySize = 256;
             aes.BlockSize = 128;
             aes.Mode = CipherMode.CBC;
             aes.Padding = PaddingMode.PKCS7;
-            aes.Key = Encoding.UTF8.GetBytes(key);
+            aes.Key = Encoding.UTF8.GetBytes(key32);
             aes.IV = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
             using (ICryptoTransform encrypt = aes.CreateEncryptor(aes.Key, aes.IV))
@@ -189,19 +189,19 @@ namespace JzSayGen
         /// AES256 CBC PKCS7 解密 与php、java等交互
         /// </summary>
         /// <param name="s"></param>
-        /// <param name="key">32位密钥</param>
+        /// <param name="key32">32位密钥</param>
         /// <returns></returns>
-        public static string AESDecryptSwap(this string s, string key)
+        public static string AESDecryptSwap(this string s, string key32)
         {
             if (s.IsNullOrEmpty()) return "";
-            if (key.IsNullOrEmpty() || key.Length != 32) return "";
+            if (key32.IsNullOrEmpty() || key32.Length != 32) return "";
 
             RijndaelManaged aes = new RijndaelManaged();
             aes.KeySize = 256;
             aes.BlockSize = 128;
             aes.Mode = CipherMode.CBC;
             aes.Padding = PaddingMode.PKCS7;
-            aes.Key = Encoding.UTF8.GetBytes(key);
+            aes.Key = Encoding.UTF8.GetBytes(key32);
             aes.IV = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
             using (ICryptoTransform decrypt = aes.CreateDecryptor())

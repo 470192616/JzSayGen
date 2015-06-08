@@ -38,6 +38,10 @@
       <HintPath>bin\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
@@ -354,6 +358,9 @@
     <Content Include="JM\WUCLib\UCWebFooter.ascx" />
     <Content Include="JM\WUCLib\UCWebHeader.ascx" />
     <Content Include="JM\zui.html" />
+    <Content Include="Libs\Enyim.Caching.dll" />
+    <Content Include="Libs\log4net.dll" />
+    <Content Include="Libs\MySql.Data.dll" />
     <Content Include="media.htm" />
     <Content Include="sn.txt" />
     <Content Include="Web.config">
@@ -381,6 +388,7 @@
     <Compile Include="ClsDll\ACPageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ClsDll\MyHelper.cs" />
     <Compile Include="ClsDll\SysLogs.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -509,6 +517,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="JM\Site1.Master" />
+    <Content Include="Libs\MySQL Connector Net 6.9.4.zip" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
